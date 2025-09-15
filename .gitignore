@@ -1,0 +1,4 @@
+.idea
+.env.development
+.env.local
+node_modules
