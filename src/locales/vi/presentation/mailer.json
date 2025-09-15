@@ -1,0 +1,18 @@
+{
+  "otp": {
+    "register": {
+      "otpSubject": "[WaifuVerse]Mã Xác Nhận",
+      "dearUser": "Người dùng thân mến",
+      "yourOTPIsBelow": "Đây là mã OTP đăng ký tài khoản WaifuVerse của bạn. Vui lòng sử dụng trong vòng 10 phút để xác nhận.",
+      "thisIsAutomatedEmail": "Đây là email tự động. Vui lòng không trả lời.",
+      "thanks": "Xin cảm ơn"
+    },
+    "forgot-password": {
+      "otpSubject": "[WaifuVerse]Mã Xác Nhận",
+      "dearUser": "Người dùng thân mến",
+      "yourOTPIsBelow": "Đây là mã OTP lấy lại mật khẩu tài khoản WaifuVerse của bạn. Vui lòng sử dụng trong vòng 10 phút để xác nhận.",
+      "thisIsAutomatedEmail": "Đây là email tự động. Vui lòng không trả lời.",
+      "thanks": "Xin cảm ơn"
+    }
+  }
+}

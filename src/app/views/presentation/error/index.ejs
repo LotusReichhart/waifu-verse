@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="waifu, anime, character, AI, verse, interaction">
+    <meta name="author" content="Lotus Reichhart - aka DNA">
+
+    <title><%= status %> | <%= message %></title>
+
+    <link rel="stylesheet" href="/stylesheets/tailwind.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <script src="/javascript/common/client-preferences.js"></script>
+</head>
+
+<body class="min-h-screen overflow-hidden bg-bg">
+
+<%- include('../../partials/sticky-header', { userInfo: userInfo, isHomePage: true, searchbarJson: commonJson.searchbar }) %>
+
+<div class="flex h-screen w-full transition-all duration-300 ease-in-out">
+    <%- include('../../partials/left-sidebar', { lang: lang, leftSidebarJson: commonJson.leftSidebar }) %>
+    <%- include('../../partials/right-sidebar', {userInfo: userInfo, lang: lang, rightSidebarJson: commonJson.rightSidebar }) %>
+
+    <div id="main-content"
+         class="flex flex-col flex-1 pt-12 text-color transition-all duration-300 ease-in-out main-shifted">
+
+        <main class="flex-1 max-w-6xl w-full mx-auto px-2 py-6">
+            <h1 class="text-3xl font-bold text-red-500"><%= status %></h1>
+            <p class="text-lg font-normal"><%= message %></p>
+        </main>
+
+        <%- include('../../partials/app-footer', {footerJson: commonJson.footer}) %>
+    </div>
+</div>
+
+<script src="/javascript/common/flowbite.js"></script>
+<script src="/javascript/common/sticky-header.js"></script>
+<script src="/javascript/common/left-sidebar.js"></script>
+<script src="/javascript/common/right-sidebar.js"></script>
+<script src="/javascript/common/searchbar.js"></script>
+<script src="/javascript/common/datetime-format.js"></script>
+
+<script>
+    window.commonJson = <%- JSON.stringify(commonJson) %>;
+</script>
+
+</body>
+</html>

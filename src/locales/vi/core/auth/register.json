@@ -1,0 +1,34 @@
+{
+  "title": "WaifuVerse | Đăng ký",
+  "description": "Đăng ký tài khoản WaufuVerse",
+  "main": {
+    "label": {
+      "registerWithGoogle": "Đăng ký bằng Google",
+      "alreadyAccount": "Bạn đã có tài khoản?",
+      "loginNow": "Đăng nhập ngay",
+      "backToLogin": "Quay về đăng nhập",
+      "verifyOtp": "Xác minh Otp",
+      "resendOtp": "Gủi lại Otp"
+    },
+    "errors": {
+      "emailEmpty": "Vui lòng nhập Email",
+      "emailAlready": "Email đã được sử dụng",
+      "emailInvalid": "Định dạng email không chính xác",
+      "emailIsCode": "Vui lòng không nhập mã lệnh vào Email",
+      "usernameEmpty": "Vui lòng nhập tên đăng nhập",
+      "usernameExists": "Tên đăng nhập đã tồn tại",
+      "usernameIsCode": "Vui lòng không nhập mã lệnh vào Tên đăng nhập",
+      "usernameIsNumeric": "Tên đăng nhập không thể chỉ là chữ số",
+      "usernameTooShort": "Tên đăng nhập phải hơn 8 ký tự",
+      "passwordEmpty": "Vui lòng nhập Mật khẩu",
+      "passwordTooShort": "Mật khẩu phải hơn 8 ký tự",
+      "otpEmpty": "Vui lòng nhập OTP",
+      "incorrectOtp": "OTP không khớp",
+      "otpTooManyRequest": "Bạn đã yêu cầu Otp nhiều lần trong một khoảng thời gian ngắn. Vui lòng thử lại sau."
+    },
+    "message": {
+      "otpNotification": "Chúng tôi đã gửi mã Otp đến email của bạn, nhớ kiểm tra cả thư mục Spam nhé!",
+      "resendOtpIn": "Gửi lại Otp sau"
+    }
+  }
+}

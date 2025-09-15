@@ -1,0 +1,59 @@
+<footer class="background-color-alt text-color mt-16 shadow-lg">
+    <div class="max-w-6xl mx-auto px-2 py-6">
+
+        <!-- Logo + Slogan -->
+        <div class="text-center md:text-left mb-8">
+            <%- include('app-logo',{isHomePage:false}) %>
+            <p class="mt-2 text-sm max-w-full mx-auto md:mx-0">
+                <%= footerJson.slogan %>
+            </p>
+        </div>
+
+        <!-- Grid Links -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+
+            <!-- Wiki -->
+            <div>
+                <h3 class="text-sm font-semibold mb-2 uppercase tracking-wider"><%= footerJson.sections.wiki.title %></h3>
+                <ul class="space-y-1 text-sm">
+                    <li><a href="/characters" class="hover"><%= footerJson.sections.wiki.links.characters %></a></li>
+                    <li><a href="/series" class="hover"><%= footerJson.sections.wiki.links.series %></a></li>
+                    <li><a href="/universes" class="hover"><%= footerJson.sections.wiki.links.universes %></a></li>
+                    <li><a href="/tags" class="hover"><%= footerJson.sections.wiki.links.tags %></a></li>
+                </ul>
+            </div>
+
+            <!-- Blog -->
+            <div>
+                <h3 class="text-sm font-semibold mb-2 uppercase tracking-wider"><%= footerJson.sections.blog.title %></h3>
+                <ul class="space-y-1 text-sm">
+                    <li><a href="/blog" class="hover"><%= footerJson.sections.blog.links.latest %></a></li>
+                    <li><a href="/blog/categories" class="hover"><%= footerJson.sections.blog.links.categories %></a>
+                    </li>
+                    <li><a href="/blog/tags" class="hover"><%= footerJson.sections.blog.links.tags %></a></li>
+                    <li><a href="/blog/about" class="hover"><%= footerJson.sections.blog.links.about %></a></li>
+                </ul>
+            </div>
+
+            <!-- Connect -->
+            <div>
+                <h3 class="text-sm font-semibold mb-2 uppercase tracking-wider"><%= footerJson.sections.connect.title %></h3>
+                <ul class="space-y-1 text-sm">
+                    <li><a href="mailto:contact@waifuverse.com"
+                           class="hover"><%= footerJson.sections.connect.links.contact %></a></li>
+                    <li><a href="#" class="hover"><%= footerJson.sections.connect.links.discord %></a></li>
+                    <li><a href="#" class="hover"><%= footerJson.sections.connect.links.twitter %></a></li>
+                    <li><a href="#" class="hover"><%= footerJson.sections.connect.links.github %></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-border mt-10 py-4 text-center text-xs">
+        © <span id="footer-year"></span> Waifu Verse. <%= footerJson.bottom.rights %>
+        <br class="md:hidden"/>
+        <%= footerJson.bottom.builtWith %> <a href="https://github.com/LotusReichhart"
+                                              class="font-medium hover:underline"><%= footerJson.bottom.author %></a>.
+    </div>
+</footer>

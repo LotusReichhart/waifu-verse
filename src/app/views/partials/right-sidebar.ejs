@@ -1,0 +1,119 @@
+<aside id="right-sidebar"
+       class="fixed z-[120] w-72 pt-2 top-0 right-0 h-full background-color-alt text-color shadow-lg
+              transition-transform duration-300 ease-in-out right-sidebar-shown hidden">
+
+    <button id="right-sidebar-close"
+            class="absolute p-1 top-5 -left-4 transform -translate-y-1/2
+                   button-primary text-on-primary rounded-full text-xl transition shadow">
+        <svg class="w-6 h-6"
+             aria-hidden="true"
+             xmlns="http://www.w3.org/2000/svg"
+             width="24"
+             height="24"
+             fill="none"
+             viewBox="0 0 24 24">
+            <path stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2" d="m9 5 7 7-7 7"/>
+        </svg>
+    </button>
+
+    <div class="w-full mt-10 flex flex-col items-center justify-center space-y-1">
+        <% if (userInfo) { %>
+            <div class="<%= userInfo.avatar ? 'w-12 h-12 rounded-full' : 'p-2 bg-transparent primary-border rounded-full' %>">
+                <% if (userInfo.avatar) { %>
+                    <img class="object-cover rounded-full"
+                         src="<%= userInfo.avatar %>"
+                         alt="User Avatar">
+                <% } else { %>
+                    <svg class="w-10 h-10"
+                         xmlns="http://www.w3.org/2000/svg"
+                         width="24"
+                         height="24"
+                         viewBox="0 0 15 15">
+                        <path fill="currentColor" fill-rule="evenodd"
+                              d="M7.5.875a3.625 3.625 0 0 0-1.006 7.109c-1.194.145-2.218.567-2.99 1.328c-.982.967-1.479 2.408-1.479 4.288a.475.475 0 1 0 .95 0c0-1.72.453-2.88 1.196-3.612c.744-.733 1.856-1.113 3.329-1.113s2.585.38 3.33 1.113c.742.733 1.195 1.892 1.195 3.612a.475.475 0 1 0 .95 0c0-1.88-.497-3.32-1.48-4.288c-.77-.76-1.795-1.183-2.989-1.328A3.627 3.627 0 0 0 7.5.875ZM4.825 4.5a2.675 2.675 0 1 1 5.35 0a2.675 2.675 0 0 1-5.35 0Z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                <% } %>
+            </div>
+        <% } else { %>
+            <div class="p-2 bg-transparent primary-border rounded-full">
+                <svg class="w-10 h-10"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 15 15">
+                    <path fill="currentColor" fill-rule="evenodd"
+                          d="M7.5.875a3.625 3.625 0 0 0-1.006 7.109c-1.194.145-2.218.567-2.99 1.328c-.982.967-1.479 2.408-1.479 4.288a.475.475 0 1 0 .95 0c0-1.72.453-2.88 1.196-3.612c.744-.733 1.856-1.113 3.329-1.113s2.585.38 3.33 1.113c.742.733 1.195 1.892 1.195 3.612a.475.475 0 1 0 .95 0c0-1.88-.497-3.32-1.48-4.288c-.77-.76-1.795-1.183-2.989-1.328A3.627 3.627 0 0 0 7.5.875ZM4.825 4.5a2.675 2.675 0 1 1 5.35 0a2.675 2.675 0 0 1-5.35 0Z"
+                          clip-rule="evenodd"/>
+                </svg>
+            </div>
+        <% } %>
+        <span class="text-lg text-primary font-semibold">
+            <% if(userInfo){ %>
+                <%= userInfo.username %>
+            <% }else { %>
+                <%= rightSidebarJson.guest %>
+            <% } %>
+        </span>
+    </div>
+
+    <nav class="px-2 mt-6 text-sm space-y-3">
+        <% if(userInfo){ %>
+            <% if(userInfo.username){ %>
+                <a href="/user/profile"
+                   class="flex items-center p-1 rounded primary-hover text-xs uppercase font-semibold">
+                    <svg class="w-5 h-5 mr-1"
+                         xmlns="http://www.w3.org/2000/svg"
+                         width="24"
+                         height="24"
+                         viewBox="0 0 15 15">
+                        <path fill="currentColor"
+                              fill-rule="evenodd"
+                              d="M7.5.875a3.625 3.625 0 0 0-1.006 7.109c-1.194.145-2.218.567-2.99 1.328c-.982.967-1.479 2.408-1.479 4.288a.475.475 0 1 0 .95 0c0-1.72.453-2.88 1.196-3.612c.744-.733 1.856-1.113 3.329-1.113s2.585.38 3.33 1.113c.742.733 1.195 1.892 1.195 3.612a.475.475 0 1 0 .95 0c0-1.88-.497-3.32-1.48-4.288c-.77-.76-1.795-1.183-2.989-1.328A3.627 3.627 0 0 0 7.5.875ZM4.825 4.5a2.675 2.675 0 1 1 5.35 0a2.675 2.675 0 0 1-5.35 0Z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                    <%= rightSidebarJson.profile %>
+                </a>
+            <% } %>
+        <% } %>
+        <a href="/settings"
+           class="flex items-center p-1 rounded primary-hover text-xs uppercase font-semibold">
+            <svg class="w-6 h-6 mr-1"
+                 aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 fill="none"
+                 viewBox="0 0 24 24">
+                <path stroke="currentColor"
+                      stroke-linecap="square"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+            </svg>
+            <%= rightSidebarJson.settings %>
+        </a>
+        <div class="pt-6 flex justify-center items-center">
+            <% if(userInfo){ %>
+                <a href="/auth/logout"
+                   role="button"
+                   class="rounded py-2 px-6 button-primary font-semibold">
+                    <%= rightSidebarJson.logout %>
+                </a>
+            <% }else { %>
+                <a href="/auth/login"
+                   role="button"
+                   class="rounded py-2 px-6 button-primary font-semibold">
+                    <%= rightSidebarJson.login %>
+                </a>
+            <% } %>
+        </div>
+    </nav>
+</aside>
+
+<div id="right-sidebar-backdrop"
+     class="fixed inset-0 bg-black/30 z-[110] hidden transition-opacity duration-300 opacity-0"></div>
+
