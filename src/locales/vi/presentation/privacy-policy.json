@@ -1,0 +1,54 @@
+{
+  "title": "WaifuVerse | Chính sách Quyền riêng tư",
+  "description": "Chính sách Quyền riêng tư của WaifuVerse giải thích cách chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ thông tin cá nhân của bạn khi sử dụng dịch vụ.",
+  "main": {
+    "lastUpdated": "Cập nhật lần cuối: 2025-09-14",
+    "sections": [
+      {
+        "id": 1,
+        "title": "Phạm vi",
+        "content": "Chính sách này áp dụng cho mọi thông tin cá nhân được xử lý bởi WaifuVerse trên website, ứng dụng di động và các dịch vụ liên quan."
+      },
+      {
+        "id": 2,
+        "title": "Thông tin được thu thập",
+        "content": "Chúng tôi thu thập thông tin bạn cung cấp khi đăng ký, đăng nội dung (nhân vật, blog, bình luận), liên hệ với chúng tôi, và sử dụng dịch vụ."
+      },
+      {
+        "id": 3,
+        "title": "Cách chúng tôi sử dụng",
+        "content": "Để cung cấp, duy trì và cải thiện dịch vụ; liên lạc với bạn; cá nhân hóa nội dung; và xử lý thanh toán nếu có."
+      },
+      {
+        "id": 4,
+        "title": "Chia sẻ thông tin",
+        "content": "Chúng tôi có thể chia sẻ thông tin với nhà cung cấp dịch vụ, công ty liên kết, cơ quan thực thi pháp luật nếu pháp luật yêu cầu, hoặc với sự đồng ý của bạn."
+      },
+      {
+        "id": 5,
+        "title": "Lựa chọn của bạn",
+        "content": "Bạn có quyền truy cập, cập nhật hoặc yêu cầu xóa thông tin cá nhân; từ chối nhận thông tin tiếp thị."
+      },
+      {
+        "id": 6,
+        "title": "Lưu trữ dữ liệu",
+        "content": "Chúng tôi lưu trữ dữ liệu trong thời gian cần thiết để cung cấp dịch vụ, tuân thủ pháp luật hoặc phục vụ mục đích kinh doanh."
+      },
+      {
+        "id": 7,
+        "title": "Bảo mật",
+        "content": "Chúng tôi áp dụng các biện pháp kỹ thuật và tổ chức để bảo vệ thông tin cá nhân của bạn."
+      },
+      {
+        "id": 8,
+        "title": "Trẻ em",
+        "content": "Người dùng dưới 13 tuổi (hoặc cao hơn tùy luật địa phương) không được phép đăng ký. Chúng tôi không chủ đích thu thập thông tin từ trẻ em."
+      },
+      {
+        "id": 9,
+        "title": "Liên hệ",
+        "content": "Để yêu cầu liên quan đến quyền riêng tư, liên hệ support@waifuverse.example.com"
+      }
+    ]
+  }
+}

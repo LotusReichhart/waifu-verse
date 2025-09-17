@@ -1,0 +1,21 @@
+{
+  "title": "WaifuVerse | Đăng nhập",
+  "description": "Đăng nhập tài khoản WaufuVerse",
+  "main": {
+    "label": {
+      "doNotHaveAccount": "Chưa có tài khoản?",
+      "registerNow": "Đăng ký ngay",
+      "loginWithGoogle": "Đăng nhập với Google",
+      "login": "Đăng nhập"
+    },
+    "errors": {
+      "emailOrUsernameEmpty": "Vui lòng nhập Username/Email",
+      "emailOrUsernameIsCode": "Vui lòng không nhập mã lệnh vào Tên đăng nhập/Email",
+      "passwordEmpty": "Vui lòng nhập Mật khẩu",
+      "emailNotRegistered": "Email chưa đăng ký tài khoản",
+      "accountNotExits": "Tài khoản không tồn tại",
+      "incorrectPassword": "Mật khẩu không đúng",
+      "accountBanned": "Tài khoản bị cấm"
+    }
+  }
+}

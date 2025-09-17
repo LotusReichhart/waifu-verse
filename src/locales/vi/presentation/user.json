@@ -1,0 +1,68 @@
+{
+  "profile": {
+    "title": "WaifuVerse | Hồ sơ cá nhân",
+    "description": "Xem và quản lý thông tin cá nhân, hoạt động và nội dung bạn đã tạo trên Waifu Verse.",
+    "main": {
+      "label": {
+        "editProfile": "Chỉnh sửa hồ sơ",
+        "trashCan": "Thùng rác",
+        "myBlogs": "Blog của tôi",
+        "myActivity": "Hoạt động của tôi"
+      }
+    }
+  },
+  "editProfile": {
+    "title": "WaifuVerse | Chỉnh sửa hồ sơ cá nhân",
+    "description": "Cập nhật và chỉnh sửa thông tin cá nhân của bạn, bao gồm tên, ảnh đại diện, giới thiệu và các chi tiết khác.",
+    "main": {
+      "title": "Chỉnh sửa thông tin",
+      "profileAccount": "Hồ sơ tài khoản",
+      "upload": "Tải ảnh lên",
+      "username": "Tên người dùng",
+      "displayName": "Tên hiển thị",
+      "notSet": "Chưa thiết lập",
+      "website": "Trang web",
+      "bio": "Tiểu sử",
+      "roles": "Quyền hạn tài khoản",
+      "status": "Trạng thái tài khoản",
+      "saveChange": "Lưu thay đổi"
+    }
+  },
+  "recycleBin": {
+    "title": "WaifuVerse | Thùng rác",
+    "description": "Quản lý và khôi phục các mục đã xóa, bao gồm bài viết, nhân vật hoặc dữ liệu cá nhân khác.",
+    "main": {
+      "title": "Thùng rác",
+      "recycleBinEmpty": "Thùng rác trống",
+      "restoreAllTitle": "Khôi phục tất cả",
+      "restoreAllMessage": "Khôi phục tất cả mục đã chọn?",
+      "deleteAllTitle": "Xóa tất cả",
+      "deleteAllMessage": "Sau khi xóa tất cả sẽ không thể khôi phục. Tiếp tục?",
+      "restoreItemTitle": "Khôi phục mục",
+      "restoreItemMessage": "Khôi phục mục này?",
+      "deleteItemTitle": "Xóa mục",
+      "deleteItemMessage": "Sau khi xóa sẽ không thể khôi phục. Tiếp tục?",
+      "invalidModel": "Đối tượng không hợp lệ",
+      "movedToTrash": "Đã chuyển vào Thùng rác. Bạn có thể khôi phục trong vòng 30 ngày.",
+      "allComplete": "Khôi phục tất cả hoàn tất",
+      "singleComplete": "Đã khôi phục mục được chọn",
+      "deleteAllComplete": "Đã xóa tất cả mục được chọn",
+      "deleteSingleComplete": "Đã xóa mục được chọn"
+    }
+  },
+  "fields": {
+    "usernameTooLong": "Tên người dùng quá dài (tối đa 30 ký tự).",
+    "usernameTooShort": "Tên người dùng quá ngắn (tối thiểu 3 ký tự).",
+    "usernameIsLink": "Tên người dùng không được chứa liên kết.",
+    "usernameIsCode": "Tên người dùng không được chứa câu lệnh.",
+    "usernameIsNumeric": "Tên người dùng không được chỉ là các chữ số.",
+    "nameTooLong": "Tên quá dài (tối đa 60 ký tự).",
+    "nameTooShort": "Tên quá ngắn (tối thiểu 2 ký tự).",
+    "nameIsLink": "Tên không được chứa liên kết.",
+    "nameIsCode": "Tên không được chứa câu lệnh.",
+    "nameIsNumeric": "Tên không được chỉ là các chữ số.",
+    "websiteInvalid": "Website không hợp lệ.",
+    "biographyTooLong": "Tiểu sử không được dài hơn 250 ký tự.",
+    "unableUpload": "Không thể tải hình ảnh lên"
+  }
+}

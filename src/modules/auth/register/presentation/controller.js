@@ -2,8 +2,7 @@ import {loadLocale} from "../../../../shared/utils/locales-helper.js";
 import {registerUIData} from "./ui-data.js";
 import {AppError} from "../../../../shared/utils/app-error.js";
 import {serviceLocator} from "../../../../app/service-locator.js";
-
-const requestAccountRegistration = serviceLocator.auth.requestAccountRegistration;
+import {setAuthCookies, setUserPreferenceCookies} from "../../../../shared/utils/cookies-helper.js";
 
 export function renderRegisterPage(req, res) {
     const lang = req.lang;
@@ -17,6 +16,8 @@ export function renderRegisterPage(req, res) {
     });
     return res.status(200).render("modules/auth/register/index", uiData);
 }
+
+const requestAccountRegistration = serviceLocator.auth.requestAccountRegistration;
 
 export async function postRequestRegister(req, res) {
     const {email, username, password} = req.body;
@@ -80,6 +81,9 @@ export async function postRequestRegister(req, res) {
     }
 }
 
+const verifyAccountRegistration = serviceLocator.auth.verifyAccountRegistration;
+const issueTokens = serviceLocator.auth.issueTokens;
+
 export async function postVerifyRegister(req, res) {
     const {otp, email, duration} = req.body;
     const lang = req.lang;
@@ -87,9 +91,9 @@ export async function postVerifyRegister(req, res) {
     const commonJson = loadLocale(lang, 'presentation', "common");
 
     try {
-        const {user} = await serviceLocator.auth.verifyAccountRegistration.execute({otp: otp, email: email});
+        const {user} = await verifyAccountRegistration.execute({otp: otp, email: email});
 
-        const {accessToken, refreshToken} = await serviceLocator.auth.issueTokens.execute(user);
+        const {accessToken, refreshToken} = await issueTokens.execute(user);
 
         const userLang = user?.settings?.lang || "en";
         const theme = user?.settings?.theme || "light";
@@ -127,48 +131,5 @@ export async function postVerifyRegister(req, res) {
         });
 
         return res.status(err.status).render("modules/auth/register/index", uiData);
-    }
-}
-
-function setAuthCookies({res = null, accessToken = null, refreshToken = null}) {
-    if (!res) return;
-    if (accessToken) {
-        res.cookie("waifuverse_at", accessToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "Lax",
-            maxAge: 60 * 60 * 1000,
-        });
-    }
-
-    if (refreshToken) {
-        res.cookie("waifuverse_rt", refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "Lax",
-            maxAge: 30 * 24 * 60 * 60 * 1000
-        });
-    }
-}
-
-function setUserPreferenceCookies({res = null, lang = null, theme = null}){
-    if (!res) return;
-
-    if (lang) {
-        res.cookie("lang", lang, {
-            httpOnly: false,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "Lax",
-            maxAge: 365 * 24 * 60 * 60 * 1000
-        });
-    }
-
-    if (theme) {
-        res.cookie("theme", theme, {
-            httpOnly: false,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "Lax",
-            maxAge: 365 * 24 * 60 * 60 * 1000
-        });
     }
 }
