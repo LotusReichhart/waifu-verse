@@ -24,6 +24,9 @@ export class LoginWithUsernameOrEmailUseCase {
             const isValid = user.password && await argon2.verify(user.password, password);
             if (!isValid) throw new AppError({key: "password", code: "incorrectPassword", status: 409});
 
+            user.lastLogin = new Date();
+            await this.userRepository.update({userEntity: user});
+
             return {user: user};
         } catch (err) {
             console.log('loginWithUsernameOrEmail err: ', err);

@@ -12,7 +12,7 @@ passport.use(new GoogleStrategy(
         clientSecret: appConfig.google.clientSecret,
         callbackURL: "/auth/google/callback",
     },
-    async (profile, done) => {
+    async (accessToken, refreshToken,profile, done) => {
         try {
             const email = profile.emails[0].value;
             let user = await findUserByEmail.execute({email: email});
@@ -30,7 +30,7 @@ passport.use(new GoogleStrategy(
                 });
             }
 
-            return done(null, user);
+            return done(null, user.id);
         } catch (err) {
             console.log('googleStrategy err: ', err);
             return done(err, null);
@@ -38,16 +38,16 @@ passport.use(new GoogleStrategy(
     }
 ));
 
-// passport.serializeUser((id, done) => {
-//     done(null, id);
-// });
-//
-// passport.deserializeUser(async (id, done) => {
-//     try {
-//         done(null, id);
-//     } catch (err) {
-//         console.log('Passport deserializeUser err: ', err);
-//         done(err, null);
-//     }
-// });
+passport.serializeUser((id, done) => {
+    done(null, id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    try {
+        done(null, id);
+    } catch (err) {
+        console.log('Passport deserializeUser err: ', err);
+        done(err, null);
+    }
+});
 

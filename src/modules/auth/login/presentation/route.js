@@ -4,7 +4,6 @@ import {rateLimitWithView} from "../../../../app/middlewares/rate-limiter-middle
 import {loadLocale} from "../../../../shared/utils/locales-helper.js";
 import {loginUIData} from "./ui-data.js";
 
-
 const router = express.Router();
 
 router.get('/', renderLoginPage);

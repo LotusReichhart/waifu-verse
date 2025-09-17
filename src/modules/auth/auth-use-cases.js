@@ -11,11 +11,16 @@ import {RequestForgotPasswordUseCase, VerifyForgotPasswordUseCase} from "./forgo
 import {SaveRefreshTokenUseCase} from "./common/domain/use-cases/save-reset-token.js";
 import {VerifyResetTokenUseCase} from "./common/domain/use-cases/verify-reset-token.js";
 import {DeleteResetTokenUseCase} from "./common/domain/use-cases/delete-reset-token.js";
+import {LoginWithGoogleUseCase} from "./google/domain/use-cases/index.js";
 
 export function createAuthUseCases({userRepository, otpService, mailerService, tokenService}) {
     return {
         loginWithUsernameOrEmail: new LoginWithUsernameOrEmailUseCase(
             userRepository,
+        ),
+
+        loginWithGoogle: new LoginWithGoogleUseCase(
+            userRepository
         ),
 
         requestAccountRegistration: new RequestAccountRegistrationUseCase(
