@@ -30,7 +30,8 @@ class ServiceLocator {
         // --- Api use-cases ---
         this.api = createApiUseCases({
             otpService: this.otpService,
-            mailerService: this.mailerService
+            mailerService: this.mailerService,
+            userRepository: this.userRepository
         })
     }
 }

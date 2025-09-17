@@ -189,36 +189,36 @@ export async function deleteOTPRequestLimit(email) {
     await redisClient.del(countKey);
 }
 
-export async function saveResetToken(email, token, ttl = 15 * 60) {
+export async function storeResetToken({email, token, ttl = 15 * 60}) {
     try {
         const hashed = hashToken(token);
         const key = `resetToken:${hashed}`;
         await redisClient.set(key, email, {EX: ttl});
         return {success: true};
     } catch (err) {
-        console.log("saveResetToken error:", err);
+        console.log("storeResetToken error:", err);
         return {success: false};
     }
 }
 
-export async function verifyResetToken(token) {
+export async function validateAndConsumeResetToken(token) {
     if (!token) return {email: null};
     try {
         const hashed = hashToken(token);
         const key = `resetToken:${hashed}`;
         return {email: await redisClient.get(key)};
     } catch (err) {
-        console.log("verifyResetToken error:", err);
+        console.log("validateAndConsumeResetToken error:", err);
         return {email: null};
     }
 }
 
-export async function deleteResetToken(token) {
+export async function removeResetTokenFromRedis(token) {
     try {
         const hashed = hashToken(token);
         const key = `resetToken:${hashed}`;
         await redisClient.del(key);
     } catch (err) {
-        console.log("deleteResetToken error:", err);
+        console.log("removeResetTokenFromRedis error:", err);
     }
 }

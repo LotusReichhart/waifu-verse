@@ -7,8 +7,10 @@ import {
     IssueTokensUseCase
 } from "./common/domain/use-cases/index.js";
 import {LoginWithUsernameOrEmailUseCase} from "./login/domain/use-cases/index.js";
-
-// sau này import thêm login, forgot-password use-cases ở đây
+import {RequestForgotPasswordUseCase, VerifyForgotPasswordUseCase} from "./forgot-password/domain/use-cases/index.js";
+import {SaveRefreshTokenUseCase} from "./common/domain/use-cases/save-reset-token.js";
+import {VerifyResetTokenUseCase} from "./common/domain/use-cases/verify-reset-token.js";
+import {DeleteResetTokenUseCase} from "./common/domain/use-cases/delete-reset-token.js";
 
 export function createAuthUseCases({userRepository, otpService, mailerService, tokenService}) {
     return {
@@ -26,9 +28,20 @@ export function createAuthUseCases({userRepository, otpService, mailerService, t
             otpService
         ),
 
+        requestForgotPassword: new RequestForgotPasswordUseCase(
+            userRepository,
+            otpService,
+            mailerService
+        ),
+        verifyForgotPassword: new VerifyForgotPasswordUseCase(
+            otpService
+        ),
+
         findUserByEmail: new FindUserByEmailUseCase(userRepository),
         createNewUser: new CreateNewUserUseCase(userRepository),
         issueTokens: new IssueTokensUseCase(tokenService),
-        // sau này thêm loginUseCase, forgotPasswordUseCase, ...
+        saveResetToken: new SaveRefreshTokenUseCase(tokenService),
+        verifyResetToken: new VerifyResetTokenUseCase(tokenService),
+        deleteResetToken: new DeleteResetTokenUseCase(tokenService),
     };
 }
