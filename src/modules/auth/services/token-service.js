@@ -7,6 +7,10 @@ export class TokenService {
         throw new Error("Not implemented");
     }
 
+    async deleteRefreshToken(token) {
+        throw new Error("Not implemented");
+    }
+
     async saveResetToken({email}) {
         throw new Error("Not implemented");
     }

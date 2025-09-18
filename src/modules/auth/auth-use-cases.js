@@ -3,7 +3,7 @@ import {
     VerifyAccountRegistration
 } from "./register/domain/use-cases/index.js";
 import {
-    CreateNewUserUseCase,
+    CreateNewUserUseCase, DeleteRefreshTokenUseCase,
     DeleteResetTokenUseCase,
     FindUserByEmailUseCase,
     IssueTokensUseCase,
@@ -58,6 +58,7 @@ export function createAuthUseCases({userRepository, otpService, mailerService, t
         issueTokens: new IssueTokensUseCase(tokenService),
         saveResetToken: new SaveResetTokenUseCase(tokenService),
         verifyResetToken: new VerifyResetTokenUseCase(tokenService),
+        deleteRefreshToken: new DeleteRefreshTokenUseCase(tokenService),
         deleteResetToken: new DeleteResetTokenUseCase(tokenService),
         verifyRefreshToken: new VerifyRefreshTokenUseCase(tokenService)
     };

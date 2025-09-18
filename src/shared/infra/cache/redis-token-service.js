@@ -1,5 +1,6 @@
 import {TokenService} from "../../../modules/auth/services/token-service.js";
 import {
+    removeRefreshToken,
     removeResetTokenFromRedis,
     storeRefreshToken,
     storeResetToken,
@@ -20,6 +21,10 @@ export class RedisTokenService extends TokenService {
 
     async saveRefreshToken({userId, token}) {
         return storeRefreshToken({userId, token});
+    }
+
+    async deleteRefreshToken(token) {
+        return removeRefreshToken(token);
     }
 
     async saveResetToken({email}) {

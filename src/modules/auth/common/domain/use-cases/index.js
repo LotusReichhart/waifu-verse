@@ -1,6 +1,7 @@
 export {CreateNewUserUseCase} from './create-new-user.js'
 export {FindUserByEmailUseCase} from './find-user-by-email.js'
 export {IssueTokensUseCase} from './issue-tokens.js'
+export {DeleteRefreshTokenUseCase} from './delete-refresh-token.js'
 export {DeleteResetTokenUseCase} from './delete-reset-token.js'
 export {SaveResetTokenUseCase} from './save-reset-token.js'
 export {VerifyRefreshTokenUseCase} from './verify-refresh-token.js'

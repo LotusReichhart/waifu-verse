@@ -23,7 +23,7 @@ export async function validateAndConsumeRefreshToken(token) {
     }
 }
 
-export async function deleteRefreshToken(token) {
+export async function removeRefreshToken(token) {
     const hashed = hashToken(token);
     await redisClient.del(`refresh:${hashed}`);
 }
