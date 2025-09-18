@@ -1,6 +1,7 @@
 import {verifyAccessToken} from "../../shared/utils/token-helper.js";
 import {loadLocale} from "../../shared/utils/locales-helper.js";
 import {serviceLocator} from "../service-locator.js";
+import {loggerHelper} from "../../shared/utils/logger-helper.js";
 
 const getUserById = serviceLocator.user.getUseById;
 
@@ -15,10 +16,8 @@ export async function errorHandler(err, req, res, next) {
     const refreshToken = req.cookies.waifuverse_rt;
 
     if (!token) {
-        if (refreshToken) {
+        if (refreshToken && !req.originalUrl.startsWith("/auth/refresh")) {
             return res.redirect(`/auth/refresh?redirect=${encodeURIComponent(req.originalUrl)}`);
-        } else {
-            return next();
         }
     }
 
@@ -44,7 +43,7 @@ export async function errorHandler(err, req, res, next) {
         message = commonJson.errors?.somethingIsWrong || "Something went wrong";
     }
 
-    console.log("Error Middleware: ", err);
+    loggerHelper.error("Error Middleware", {error: err});
 
     res.status(status).render("presentation/error/index", {
         lang: lang,

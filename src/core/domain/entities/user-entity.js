@@ -43,13 +43,9 @@ export class UserEntity {
 
     toPublicInfo() {
         return {
-            id: this.id,
-            email: this.email,
             username: this.username,
             name: this.name,
-            avatar: this.avatar,
-            biography: this.biography,
-            website: this.website,
+            avatar: this.avatar
         };
     }
 }

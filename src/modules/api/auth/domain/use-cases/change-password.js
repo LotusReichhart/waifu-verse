@@ -1,6 +1,7 @@
 import {AppError} from "../../../../../shared/utils/app-error.js";
 import {isEmpty, isTooShort} from "../../../../../shared/utils/text-validator.js";
 import argon2 from "argon2";
+import {loggerHelper} from "../../../../../shared/utils/logger-helper.js";
 
 export class ChangePasswordUseCase {
     constructor(userRepository) {
@@ -32,7 +33,7 @@ export class ChangePasswordUseCase {
             const result = await this.userRepository.update({userEntity: user});
             return {success: !!result};
         } catch (err) {
-            console.log('changePassword err: ', err);
+            loggerHelper.error('changePassword err', {error: err});
             if (err instanceof AppError) throw err;
             throw new AppError({});
         }

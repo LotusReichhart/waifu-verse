@@ -1,5 +1,6 @@
 import {createClient} from 'redis';
 import {appConfig} from "../../../config/app-config.js";
+import {loggerHelper} from "../../utils/logger-helper.js";
 
 const redisClient = createClient({
     socket: {
@@ -16,18 +17,16 @@ const redisClient = createClient({
     tls: true,
 });
 
-redisClient.on('error', err => console.log('Redis Client Error', err));
+redisClient.on('error', err => loggerHelper.error('Redis Client Error', {error: err}));
 
 const connectRedis = async () => {
     try {
         await redisClient.connect();
-        console.log('Connected to Redis');
+        loggerHelper.info('Connected to Redis');
     } catch (err) {
-        console.error('Could not connect to Redis', err.message);
+        loggerHelper.error('Could not connect to Redis', {error: err.message});
     }
 };
 
 await connectRedis();
 export default redisClient;
-
-

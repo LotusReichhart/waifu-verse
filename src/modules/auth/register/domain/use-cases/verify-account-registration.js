@@ -1,6 +1,7 @@
 import {isEmail, isEmpty} from "../../../../../shared/utils/text-validator.js";
 import {AppError} from "../../../../../shared/utils/app-error.js";
 import {UserEntity} from "../../../../../core/domain/entities/user-entity.js";
+import {loggerHelper} from "../../../../../shared/utils/logger-helper.js";
 
 export class VerifyAccountRegistration {
     constructor(userRepository, otpService) {
@@ -40,7 +41,7 @@ export class VerifyAccountRegistration {
 
             return {user: newUser};
         } catch (err) {
-            console.log("verifyAccountRegistration err: ", err);
+            loggerHelper.error("verifyAccountRegistration err", {error: err});
             if (err instanceof AppError) throw err;
             throw new AppError({});
         }

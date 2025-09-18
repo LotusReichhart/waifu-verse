@@ -1,5 +1,5 @@
 import express from 'express';
-import {postRequestForgotPassword, postVerifyForgotPassword, renderForgotPasswordPage} from "./controller.js";
+import {postRequestForgotPassword, postVerifyForgotPassword, renderForgotPasswordPage} from "./adapter.js";
 import {rateLimitWithView} from "../../../../app/middlewares/rate-limiter-middleware.js";
 import {loadLocale} from "../../../../shared/utils/locales-helper.js";
 import {forgotPasswordUIData} from "./ui-data.js";

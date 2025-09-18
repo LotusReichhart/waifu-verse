@@ -1,7 +1,7 @@
 import {Router} from "express";
 
 import {googleAuthenticate, googleCallbackAuth} from "../../../../shared/middlewares/google.middleware.js";
-import {googleCallBack} from "./controller.js";
+import {googleCallBack} from "./adapter.js";
 
 const router = Router();
 

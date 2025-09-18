@@ -6,6 +6,7 @@ import {v4 as uuidv4} from "uuid";
 import {extractMediaUrlsFromHtml} from "../../utils/html-helper.js";
 import {s3} from "./s3.js";
 import {appConfig} from "../../../config/app-config.js";
+import {loggerHelper} from "../../utils/logger-helper.js";
 
 const s3Domain = `${appConfig.aws.bucket}.s3.${appConfig.aws.region}.amazonaws.com`;
 
@@ -143,9 +144,9 @@ export async function cleanUpUnusedS3Media(oldContent, newContent) {
                 Bucket: appConfig.aws.bucket,
                 Key: key
             }));
-            console.log(`Deleted from S3: ${key}`);
+            loggerHelper.info(`Deleted from S3: ${key}`);
         } catch (err) {
-            console.log('Lỗi khi xóa ảnh cũ khỏi S3:', err.message);
+            loggerHelper.error("Error deleting old image from S3", {error: err.message, key});
         }
     }
 }
@@ -161,12 +162,9 @@ export async function deleteS3ObjectByUrl(url) {
             Bucket: appConfig.aws.bucket,
             Key: key
         }));
-        // console.log(`Đã xóa file S3: ${key}`);
         return true;
     } catch (err) {
-        // console.error('Lỗi khi xóa file khỏi S3:', err.message);
+        loggerHelper.error("Error deleting file from S3", {error: err.message, key});
         return false;
     }
 }
-
-

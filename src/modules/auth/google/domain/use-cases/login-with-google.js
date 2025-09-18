@@ -1,4 +1,5 @@
 import {AppError} from "../../../../../shared/utils/app-error.js";
+import {loggerHelper} from "../../../../../shared/utils/logger-helper.js";
 
 export class LoginWithGoogleUseCase {
     constructor(userRepository) {
@@ -6,7 +7,6 @@ export class LoginWithGoogleUseCase {
     }
 
     async execute(id) {
-
         try {
             const user = await this.userRepository.getById({userId: id});
             if (!user) throw new AppError({key: "global", code: "accountNotExits", status: 404});
@@ -16,7 +16,7 @@ export class LoginWithGoogleUseCase {
 
             return {user: user};
         } catch (err) {
-            console.log('LoginWithGoogle err: ', err);
+            loggerHelper.error('LoginWithGoogle err', {error: err});
             if (err instanceof AppError) throw err;
             throw new AppError({});
         }

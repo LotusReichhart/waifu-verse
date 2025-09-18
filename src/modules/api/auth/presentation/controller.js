@@ -1,5 +1,6 @@
 import {loadLocale} from "../../../../shared/utils/locales-helper.js";
 import {serviceLocator} from "../../../../app/service-locator.js";
+import {loggerHelper} from "../../../../shared/utils/logger-helper.js";
 
 const resendOTP = serviceLocator.api.resendOtp;
 
@@ -18,7 +19,7 @@ export async function postResendOTP(req, res) {
 
         return res.status(200).json({message: ""});
     } catch (err) {
-        console.log('postResendOTP error:', err);
+        loggerHelper.error('postResendOTP error', {error: err});
 
         const errorFields = {
             [err.key]: (err.status !== 500
@@ -48,10 +49,10 @@ export async function postChangePassword(req, res) {
 
     try {
         const {email} = await verifyResetToken.execute(resetToken);
-        const {success} =await changePassword.execute({
-           email: email,
-           password: password,
-           confirmPassword: confirmPassword
+        const {success} = await changePassword.execute({
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
         });
 
         await deleteResetToken.execute(resetToken);
@@ -72,7 +73,7 @@ export async function postChangePassword(req, res) {
             });
         }
     } catch (err) {
-        console.log('postChangePassword error:', err);
+        loggerHelper.error('postChangePassword error', {error: err});
 
         const errorFields = {
             [err.key]: (err.status !== 500

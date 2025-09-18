@@ -1,6 +1,26 @@
 import {loadLocale} from "../../shared/utils/locales-helper.js";
 import {appConfig} from "../../config/app-config.js";
 
+export async function renderHomePage(req, res) {
+    const lang = req.lang;
+    const user = req.user;
+    const ls = req.cookies.ls;
+
+    const homeJson = loadLocale(lang, 'presentation', "home");
+    const commonJson = loadLocale(lang, 'presentation', "common");
+
+    const userInfo = user ? user?.toPublicInfo() : null;
+
+    return res.status(200).render("presentation/home/index", {
+        lang: lang,
+        ls: ls,
+        userInfo: userInfo,
+        homeJson: homeJson,
+        commonJson: commonJson,
+        canonicalUrl: `${appConfig.server.domain}/${lang}`
+    });
+}
+
 export async function renderPrivacyPolicyPage(req, res) {
     const lang = req.lang;
     const user = req.user;

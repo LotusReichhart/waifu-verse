@@ -10,7 +10,7 @@
     },
     "errors": {
       "emailOrUsernameEmpty": "Vui lòng nhập Username/Email",
-      "emailOrUsernameIsCode": "Vui lòng không nhập mã lệnh vào Tên đăng nhập/Email",
+      "emailOrUsernameIsCode": "Vui lòng không nhập mã lệnh vào Tên người dùng/Email",
       "passwordEmpty": "Vui lòng nhập Mật khẩu",
       "emailNotRegistered": "Email chưa đăng ký tài khoản",
       "accountNotExits": "Tài khoản không tồn tại",

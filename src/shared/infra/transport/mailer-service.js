@@ -1,4 +1,5 @@
 import {mailTransporter} from "./mailer.js";
+import {loggerHelper} from "../../utils/logger-helper.js";
 
 export async function sendMail({form = "WaifuVerse Support <no-reply@waifuverse.com>", to, subject, text, html}) {
     try {
@@ -11,8 +12,7 @@ export async function sendMail({form = "WaifuVerse Support <no-reply@waifuverse.
         });
         return true;
     } catch (err) {
-        console.log("Mail sending failed:", err.message);
+        loggerHelper.error("Mail sending failed", {error: err.message});
         return false;
     }
 }
-

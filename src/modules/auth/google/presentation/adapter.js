@@ -1,5 +1,6 @@
 import {serviceLocator} from "../../../../app/service-locator.js";
 import {setAuthCookies, setUserPreferenceCookies} from "../../../../shared/utils/cookies-helper.js";
+import {loggerHelper} from "../../../../shared/utils/logger-helper.js";
 
 const loginWithGoogle = serviceLocator.auth.loginWithGoogle;
 const issueTokens = serviceLocator.auth.issueTokens;
@@ -27,7 +28,7 @@ export async function googleCallBack(req, res, next) {
 
         return res.redirect("/");
     } catch (err) {
-        console.log('googleCallback error:', err);
+        loggerHelper.error("googleCallback error", {error: err});
         next(err);
     }
 }

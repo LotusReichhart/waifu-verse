@@ -2,6 +2,7 @@ import { isCode, isEmail, isEmpty, isNumeric, isTooShort } from "../../../../../
 import { AppError } from "../../../../../shared/utils/app-error.js";
 import { generateOTP } from "../../../../../shared/utils/otp-helper.js";
 import { buildOtpTemplate } from "../../../../../shared/infra/transport/otp-template.js";
+import {loggerHelper} from "../../../../../shared/utils/logger-helper.js";
 
 export class RequestAccountRegistrationUseCase {
     constructor(userRepository, otpService, mailerService) {
@@ -63,7 +64,7 @@ export class RequestAccountRegistrationUseCase {
 
             return { email: email };
         } catch (err) {
-            console.log("requestAccountRegistration err: ", err);
+            loggerHelper.error("requestAccountRegistration err", { error: err });
             if (err instanceof AppError) throw err;
             throw new AppError({});
         }

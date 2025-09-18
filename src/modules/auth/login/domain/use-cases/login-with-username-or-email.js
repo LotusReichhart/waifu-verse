@@ -1,6 +1,7 @@
 import {isEmail, isEmpty} from "../../../../../shared/utils/text-validator.js";
 import {AppError} from "../../../../../shared/utils/app-error.js";
 import argon2 from "argon2";
+import {loggerHelper} from "../../../../../shared/utils/logger-helper.js";
 
 export class LoginWithUsernameOrEmailUseCase {
     constructor(userRepository) {
@@ -29,7 +30,7 @@ export class LoginWithUsernameOrEmailUseCase {
 
             return {user: user};
         } catch (err) {
-            console.log('loginWithUsernameOrEmail err: ', err);
+            loggerHelper.error('loginWithUsernameOrEmail err', {error: err});
             if (err instanceof AppError) throw err;
             throw new AppError({});
         }

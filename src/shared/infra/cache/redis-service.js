@@ -1,13 +1,14 @@
 import argon2 from "argon2";
 import {hashToken} from "../../utils/token-helper.js";
 import redisClient from "./redis.js";
+import {loggerHelper} from "../../utils/logger-helper.js";
 
 export async function storeRefreshToken({userId, token, ttlSeconds = 60 * 60 * 24 * 30}) {
     try {
         const hashed = hashToken(token);
         await redisClient.set(`refresh:${hashed}`, userId, {EX: ttlSeconds});
     } catch (err) {
-        console.log("storeRefreshToken err:", err.message);
+        loggerHelper.error("storeRefreshToken error", {error: err.message});
         return null;
     }
 }
@@ -18,7 +19,7 @@ export async function validateAndConsumeRefreshToken(token) {
         const hashed = hashToken(token);
         return {userId: await redisClient.get(`refresh:${hashed}`)};
     } catch (err) {
-        console.log("validateAndConsumeRefreshToken err:", err.message);
+        loggerHelper.error("validateAndConsumeRefreshToken error", {error: err.message});
         return null;
     }
 }
@@ -49,8 +50,6 @@ export async function canHeart(userId) {
 }
 
 export async function getOTPRequestLimit({email, max = 3}) {
-    // await deleteOTPRequestLimit(email)
-
     const countKey = `otp:count:${email}`;
     const count = parseInt(await redisClient.get(countKey) || "0", 10);
 
@@ -91,7 +90,7 @@ export async function saveOTPtoRedis({
             }
         }
     } catch (err) {
-        console.log("saveOTPtoRedis error:", err);
+        loggerHelper.error("saveOTPtoRedis error", {error: err});
     }
 }
 
@@ -141,7 +140,7 @@ export async function getOTP(email) {
     try {
         return JSON.parse(json);
     } catch (err) {
-        console.log("Invalid OTP data in Redis:", err);
+        loggerHelper.error("Invalid OTP data in Redis", {error: err});
         return null;
     }
 }
@@ -151,7 +150,7 @@ export async function deleteOTP(email) {
         const key = `otp:${email}`;
         await redisClient.del(key);
     } catch (err) {
-        console.log("deleteOTP err: ", err);
+        loggerHelper.error("deleteOTP error", {error: err});
         return null;
     }
 }
@@ -180,7 +179,7 @@ export async function validateAndConsumeOTP({otp, email}) {
 
         return {success: true};
     } catch (err) {
-        console.log("validateAndConsumeOTP error:", err);
+        loggerHelper.error("validateAndConsumeOTP error", {error: err});
         return {success: false};
     }
 }
@@ -197,7 +196,7 @@ export async function storeResetToken({email, token, ttl = 15 * 60}) {
         await redisClient.set(key, email, {EX: ttl});
         return {success: true};
     } catch (err) {
-        console.log("storeResetToken error:", err);
+        loggerHelper.error("storeResetToken error", {error: err});
         return {success: false};
     }
 }
@@ -209,7 +208,7 @@ export async function validateAndConsumeResetToken(token) {
         const key = `resetToken:${hashed}`;
         return {email: await redisClient.get(key)};
     } catch (err) {
-        console.log("validateAndConsumeResetToken error:", err);
+        loggerHelper.error("validateAndConsumeResetToken error", {error: err});
         return {email: null};
     }
 }
@@ -220,6 +219,6 @@ export async function removeResetTokenFromRedis(token) {
         const key = `resetToken:${hashed}`;
         await redisClient.del(key);
     } catch (err) {
-        console.log("removeResetTokenFromRedis error:", err);
+        loggerHelper.error("removeResetTokenFromRedis error", {error: err});
     }
 }

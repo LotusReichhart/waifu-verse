@@ -3,6 +3,7 @@ import {registerUIData} from "./ui-data.js";
 import {AppError} from "../../../../shared/utils/app-error.js";
 import {serviceLocator} from "../../../../app/service-locator.js";
 import {setAuthCookies, setUserPreferenceCookies} from "../../../../shared/utils/cookies-helper.js";
+import {loggerHelper} from "../../../../shared/utils/logger-helper.js";
 
 export function renderRegisterPage(req, res) {
     const lang = req.lang;
@@ -43,7 +44,7 @@ export async function postRequestRegister(req, res) {
         });
         return res.status(200).render("modules/auth/register/index", uiData);
     } catch (err) {
-        console.log('postRequestRegister error:', err);
+        loggerHelper.error('postRequestRegister error', {error: err});
 
         let errorFields = {};
 
@@ -56,15 +57,12 @@ export async function postRequestRegister(req, res) {
         };
 
         if (Array.isArray(err)) {
-            // Trường hợp throw mảng AppError
             err.forEach((e) => {
                 errorFields[e.key] = getMessage(e);
             });
         } else if (err instanceof AppError) {
-            // Trường hợp throw 1 AppError
             errorFields[err.key] = getMessage(err);
         } else {
-            // fallback cho lỗi không mong muốn
             errorFields["global"] = commonJson.errors.serverError;
         }
 
@@ -112,7 +110,7 @@ export async function postVerifyRegister(req, res) {
 
         return res.redirect("/");
     } catch (err) {
-        console.log('postVerifyRegister error:', err);
+        loggerHelper.error('postVerifyRegister error', {error: err});
 
         const errorFields = {
             [err.key]: (err.status !== 500

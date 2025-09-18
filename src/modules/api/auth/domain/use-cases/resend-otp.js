@@ -2,6 +2,7 @@ import {isEmail, isEmpty} from "../../../../../shared/utils/text-validator.js";
 import {AppError} from "../../../../../shared/utils/app-error.js";
 import {buildOtpTemplate} from "../../../../../shared/infra/transport/otp-template.js";
 import {generateOTP} from "../../../../../shared/utils/otp-helper.js";
+import {loggerHelper} from "../../../../../shared/utils/logger-helper.js";
 
 export class ResendOTPUseCase {
     constructor(otpService, mailerService) {
@@ -33,7 +34,7 @@ export class ResendOTPUseCase {
                 await this.otpService.saveOTP({email: email, otp: otp});
             }
         } catch (err) {
-            console.log("ResendOtp err: ", err);
+            loggerHelper.error("ResendOtp err", {error: err});
             if (err instanceof AppError) throw err;
             throw new AppError({});
         }

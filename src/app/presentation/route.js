@@ -1,10 +1,13 @@
 import {Router} from "express";
-import {renderPrivacyPolicyPage, renderTermsOfUsePage} from "./controller.js";
+import {renderHomePage, renderPrivacyPolicyPage, renderTermsOfUsePage} from "./adapter.js";
 import {optionalAuthMiddleware} from "../../shared/middlewares/auth.middleware.js";
 
 const router = Router();
 
-router.get('/privacy-policy', optionalAuthMiddleware, renderPrivacyPolicyPage);
-router.get('/terms-of-use', optionalAuthMiddleware, renderTermsOfUsePage);
+router.use(optionalAuthMiddleware);
+
+router.get('/', renderHomePage);
+router.get('/privacy-policy', renderPrivacyPolicyPage);
+router.get('/terms-of-use', renderTermsOfUsePage);
 
 export default router;

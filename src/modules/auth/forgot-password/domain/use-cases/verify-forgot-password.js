@@ -1,5 +1,6 @@
 import {isEmail, isEmpty} from "../../../../../shared/utils/text-validator.js";
 import {AppError} from "../../../../../shared/utils/app-error.js";
+import {loggerHelper} from "../../../../../shared/utils/logger-helper.js";
 
 export class VerifyForgotPasswordUseCase {
     constructor(otpService) {
@@ -23,7 +24,7 @@ export class VerifyForgotPasswordUseCase {
 
             return {success: true};
         } catch (err) {
-            console.log("verifyForgotPassword err: ", err);
+            loggerHelper.error("verifyForgotPassword err", {error: err});
             if (err instanceof AppError) throw err;
             throw new AppError({});
         }

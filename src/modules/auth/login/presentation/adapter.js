@@ -2,6 +2,7 @@ import {loadLocale} from "../../../../shared/utils/locales-helper.js";
 import {loginUIData} from "./ui-data.js";
 import {serviceLocator} from "../../../../app/service-locator.js";
 import {setAuthCookies, setUserPreferenceCookies} from "../../../../shared/utils/cookies-helper.js";
+import {loggerHelper} from "../../../../shared/utils/logger-helper.js";
 
 export function renderLoginPage(req, res) {
     const lang = req.lang;
@@ -13,6 +14,9 @@ export function renderLoginPage(req, res) {
         loginJson: loginJson,
         commonJson: commonJson
     });
+
+    loggerHelper.info(`Render login page with lang=${lang}`);
+
     return res.status(200).render("modules/auth/login/index", uiData);
 }
 
@@ -30,6 +34,8 @@ export async function postLogin(req, res) {
             input: input,
             password: password,
         });
+
+        loggerHelper.info(`User ${user.username || user.email} logged in`);
 
         const {accessToken, refreshToken} = await issueTokens.execute(user);
 
@@ -50,7 +56,7 @@ export async function postLogin(req, res) {
 
         return res.redirect("/");
     } catch (err) {
-        console.log('postLogin error:', err);
+        loggerHelper.error(`postLogin error: ${err.message}`, {stack: err.stack});
 
         const errorFields = {
             [err.key]: (err.status !== 500

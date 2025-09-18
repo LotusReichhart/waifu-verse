@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import {appConfig} from "../../../config/app-config.js";
+import {loggerHelper} from "../../utils/logger-helper.js";
 
 const connectToMongoDB = async () => {
     try {
@@ -7,9 +8,9 @@ const connectToMongoDB = async () => {
             {
                 dbName: appConfig.database.name,
             });
-        console.log('MongoDB connected');
+        loggerHelper.info('MongoDB connected');
     } catch (err) {
-        console.log('Connect To DB Failure: ', err);
+        loggerHelper.error('Connect To DB Failure', {error: err});
         process.exit(1);
     }
 }

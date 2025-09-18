@@ -2,6 +2,7 @@ import {isEmail, isEmpty} from "../../../../../shared/utils/text-validator.js";
 import {AppError} from "../../../../../shared/utils/app-error.js";
 import {generateOTP} from "../../../../../shared/utils/otp-helper.js";
 import {buildOtpTemplate} from "../../../../../shared/infra/transport/otp-template.js";
+import {loggerHelper} from "../../../../../shared/utils/logger-helper.js";
 
 export class RequestForgotPasswordUseCase {
     constructor(userRepository, otpService, mailerService) {
@@ -34,7 +35,7 @@ export class RequestForgotPasswordUseCase {
 
             return {email: email};
         } catch (err) {
-            console.log("requestForgotPassword err: ", err);
+            loggerHelper.error("requestForgotPassword error", {error: err});
             if (err instanceof AppError) throw err;
             throw new AppError({});
         }

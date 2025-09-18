@@ -1,6 +1,7 @@
 import {loadLocale} from "../../../../shared/utils/locales-helper.js";
 import {forgotPasswordUIData} from "./ui-data.js";
 import {serviceLocator} from "../../../../app/service-locator.js";
+import {loggerHelper} from "../../../../shared/utils/logger-helper.js";
 
 export function renderForgotPasswordPage(req, res) {
     const lang = req.lang;
@@ -39,7 +40,7 @@ export async function postRequestForgotPassword(req, res) {
         });
         return res.status(200).render("modules/auth/forgot-password/index", uiData);
     } catch (err) {
-        console.log('postRequestForgotPassword error:', err);
+        loggerHelper.error('postRequestForgotPassword error', {error: err});
 
         const errorFields = {
             [err.key]: (err.status !== 500
@@ -94,7 +95,7 @@ export async function postVerifyForgotPassword(req, res) {
         });
         return res.status(200).render("modules/auth/forgot-password/index", uiData);
     } catch (err) {
-        console.log('postVerifyForgotPassword error:', err);
+        loggerHelper.error('postVerifyForgotPassword error', {error: err});
 
         const errorFields = {
             [err.key]: (err.status !== 500

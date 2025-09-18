@@ -2,6 +2,7 @@ import passport from 'passport';
 import {Strategy as GoogleStrategy} from "passport-google-oauth20";
 import {appConfig} from "../../../config/app-config.js";
 import {serviceLocator} from "../../../app/service-locator.js";
+import {loggerHelper} from "../../utils/logger-helper.js";
 
 const findUserByEmail = serviceLocator.auth.findUserByEmail;
 const createNewUser = serviceLocator.auth.createNewUser;
@@ -12,7 +13,7 @@ passport.use(new GoogleStrategy(
         clientSecret: appConfig.google.clientSecret,
         callbackURL: "/auth/google/callback",
     },
-    async (accessToken, refreshToken,profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
         try {
             const email = profile.emails[0].value;
             let user = await findUserByEmail.execute({email: email});
@@ -32,7 +33,7 @@ passport.use(new GoogleStrategy(
 
             return done(null, user.id);
         } catch (err) {
-            console.log('googleStrategy err: ', err);
+            loggerHelper.error('googleStrategy err', {error: err});
             return done(err, null);
         }
     }
@@ -46,8 +47,7 @@ passport.deserializeUser(async (id, done) => {
     try {
         done(null, id);
     } catch (err) {
-        console.log('Passport deserializeUser err: ', err);
+        loggerHelper.error('Passport deserializeUser err', {error: err});
         done(err, null);
     }
 });
-

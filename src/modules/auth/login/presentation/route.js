@@ -1,5 +1,5 @@
 import express from 'express';
-import {postLogin, renderLoginPage} from "./controller.js";
+import {postLogin, renderLoginPage} from "./adapter.js";
 import {rateLimitWithView} from "../../../../app/middlewares/rate-limiter-middleware.js";
 import {loadLocale} from "../../../../shared/utils/locales-helper.js";
 import {loginUIData} from "./ui-data.js";

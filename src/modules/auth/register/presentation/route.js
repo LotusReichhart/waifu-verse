@@ -2,7 +2,7 @@ import express from 'express';
 import {
     postRequestRegister, postVerifyRegister,
     renderRegisterPage
-} from "./controller.js";
+} from "./adapter.js";
 import {rateLimitWithView} from "../../../../app/middlewares/rate-limiter-middleware.js";
 import {loadLocale} from "../../../../shared/utils/locales-helper.js";
 import {registerUIData} from "./ui-data.js";
