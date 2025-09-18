@@ -11,6 +11,6 @@ function setupStickyHeader() {
     new IntersectionObserver(([entry]) => {
         appHeader.classList.toggle('sticking', !entry.isIntersecting);
     }, {
-        rootMargin: '50px 0px 0px 0px',
+        rootMargin: '60px 0px 0px 0px',
     }).observe(scrollWatcher);
 }

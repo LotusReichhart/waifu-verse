@@ -2,7 +2,7 @@ import argon2 from "argon2";
 import {hashToken} from "../../utils/token-helper.js";
 import redisClient from "./redis.js";
 
-export async function storeRefreshToken(userId, token, ttlSeconds = 60 * 60 * 24 * 30) {
+export async function storeRefreshToken({userId, token, ttlSeconds = 60 * 60 * 24 * 30}) {
     try {
         const hashed = hashToken(token);
         await redisClient.set(`refresh:${hashed}`, userId, {EX: ttlSeconds});
@@ -12,12 +12,13 @@ export async function storeRefreshToken(userId, token, ttlSeconds = 60 * 60 * 24
     }
 }
 
-export async function verifyRefreshToken(token) {
+export async function validateAndConsumeRefreshToken(token) {
+    if (!token) return {userId: null};
     try {
         const hashed = hashToken(token);
-        return await redisClient.get(`refresh:${hashed}`);
+        return {userId: await redisClient.get(`refresh:${hashed}`)};
     } catch (err) {
-        console.log("verifyRefreshToken err:", err.message);
+        console.log("validateAndConsumeRefreshToken err:", err.message);
         return null;
     }
 }

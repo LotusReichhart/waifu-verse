@@ -1,6 +1,6 @@
 <aside id="left-sidebar"
        class="z-[120] md:z-[60] w-64 fixed top-0 left-0 h-full background-color-alt text-color shadow-lg
-              transition-transform duration-300 ease-in-out left-sidebar-shown hidden md:block">
+              transition-transform duration-300 ease-in-out <%= ls === "true" ? 'left-sidebar-shown' : 'left-sidebar-hidden' %> hidden md:block">
 
     <div class="flex items-center justify-between text-primary py-4 px-2">
         <%- include('app-logo',{isHomePage:false}) %>

@@ -12,6 +12,18 @@ export function notFoundHandler(req, res, next) {
 
 export async function errorHandler(err, req, res, next) {
     const token = req.cookies.waifuverse_at;
+    const refreshToken = req.cookies.waifuverse_rt;
+
+    if (!token) {
+        if (refreshToken) {
+            return res.redirect(`/auth/refresh?redirect=${encodeURIComponent(req.originalUrl)}`);
+        } else {
+            return next();
+        }
+    }
+
+    const ls = req.cookies.ls;
+
     let id = null;
     if (token) id = verifyAccessToken(token).id
 
@@ -19,8 +31,8 @@ export async function errorHandler(err, req, res, next) {
     const status = err.status || 500;
 
     const commonJson = loadLocale(lang, 'presentation', "common");
-    const user = await getUserById.execute({userId:id});
 
+    const user = await getUserById.execute({userId: id});
     const userInfo = user?.toPublicInfo();
 
     let message;
@@ -36,6 +48,7 @@ export async function errorHandler(err, req, res, next) {
 
     res.status(status).render("presentation/error/index", {
         lang: lang,
+        ls: ls,
         userInfo: userInfo,
         status: status,
         message: message,

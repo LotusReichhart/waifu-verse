@@ -19,7 +19,8 @@ import {i18nMiddleware} from "./middlewares/i18n-middleware.js";
 import connectToMongoDB from "../shared/infra/database/mongo.js";
 import {errorHandler, notFoundHandler} from "./middlewares/error.middleware.js";
 
-import authRoute from '../modules/auth/auth-routes.js';
+import appRoutes from './presentation/route.js';
+import authRoutes from '../modules/auth/auth-routes.js';
 
 import apiRoutes from '../modules/api/api-routes.js';
 
@@ -76,7 +77,8 @@ app.use('/:lang', i18nMiddleware, (req, res, next) => {
     next();
 });
 
-app.use('/:lang/auth', authRoute);
+app.use('/:lang', appRoutes)
+app.use('/:lang/auth', authRoutes);
 
 app.use("/api", i18nMiddleware);
 app.use("/api", apiRoutes);

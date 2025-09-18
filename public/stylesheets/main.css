@@ -336,9 +336,8 @@ body {
 }
 
 .app-header.sticking {
-    --_bg: var(--color-bg-alt);
+    --_bg: var(--color-bg);
     color: var(--color-text);
-    box-shadow: 0 1px 1px rgba(192, 192, 192, 0.2);
 }
 
 .app-header_inner {

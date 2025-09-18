@@ -3,6 +3,7 @@ import {
     removeResetTokenFromRedis,
     storeRefreshToken,
     storeResetToken,
+    validateAndConsumeRefreshToken,
     validateAndConsumeResetToken
 } from "./redis-service.js";
 import {createAccessToken, createRefreshToken, createResetToken} from "../../utils/token-helper.js";
@@ -34,5 +35,10 @@ export class RedisTokenService extends TokenService {
 
     async deleteResetToken(token) {
         await removeResetTokenFromRedis(token);
+    }
+
+    async verifyRefreshToken(token) {
+        const {userId} = await validateAndConsumeRefreshToken(token);
+        return {userId: userId};
     }
 }

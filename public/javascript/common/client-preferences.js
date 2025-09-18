@@ -1,11 +1,7 @@
+import {getCookie} from "./cookies-helper.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     (function () {
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        }
-
         let lang = getCookie("lang");
         if (!lang) {
             lang = navigator.language.split('-')[0];
@@ -35,6 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
             window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
                 document.documentElement.classList.toggle("dark", e.matches);
             });
+        }
+
+        let ls = getCookie("ls");
+        if (!ls) {
+            ls = true;
+            document.cookie = `ls=${ls}; path=/; max-age=31536000`;
         }
 
         const yearEl = document.getElementById("footer-year");

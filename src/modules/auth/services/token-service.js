@@ -18,4 +18,8 @@ export class TokenService {
     async deleteResetToken(token) {
         throw new Error("Not implemented");
     }
+
+    async verifyRefreshToken(token) {
+        throw new Error("Not implemented");
+    }
 }

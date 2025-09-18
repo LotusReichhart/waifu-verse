@@ -1,3 +1,5 @@
+import {setCookie} from "./cookies-helper.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     setupLeftSidebar();
 });
@@ -23,6 +25,8 @@ function setupLeftSidebar() {
         headerLogo?.classList.remove('flex');
         mainContent.classList.add('main-shifted');
 
+        setCookie({name: 'ls', value: true});
+
         if (isMobileView) {
             leftSidebarBackdrop.classList.remove('hidden');
             requestAnimationFrame(() => leftSidebarBackdrop.classList.add('opacity-100'));
@@ -35,6 +39,8 @@ function setupLeftSidebar() {
         headerLogo?.classList.add('flex');
         headerLogo?.classList.remove('hidden', 'md:hidden');
         mainContent.classList.remove('main-shifted');
+
+        setCookie({name: 'ls', value: false});
 
         if (isMobileView) {
             leftSidebarBackdrop.classList.remove('opacity-100');

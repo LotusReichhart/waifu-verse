@@ -1,21 +1,21 @@
 export class UserRepository {
-    async getById(userId) {
+    async getById({userId}) {
         throw new Error('Not implemented');
     }
 
-    async getByUsername(username) {
+    async getByUsername({username}) {
         throw new Error('Not implemented');
     }
 
-    async getByEmail(email) {
+    async getByEmail({email}) {
         throw new Error('Not implemented');
     }
 
-    async create(userEntity) {
+    async create({userEntity}) {
         throw new Error('Not implemented');
     }
 
-    async update(userEntity) {
+    async update({userEntity}) {
         throw new Error('Not implemented');
     }
 }

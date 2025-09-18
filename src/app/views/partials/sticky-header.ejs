@@ -1,7 +1,7 @@
 <header class="app-header fixed w-full z-[50] transition-all duration-300">
     <div class="h-full flex flex-wrap items-center justify-between px-2 lg:px-6">
         <div class="text-primary">
-            <div id="header-logo" class="space-x-1 flex md:hidden">
+            <div id="header-logo" class="space-x-1 flex <%= ls === 'true' ? 'md:hidden' : '' %>">
                 <svg id="left-sidebar-toggle"
                      class="w-8 h-8 rounded md:block primary-hover"
                      aria-hidden="true"

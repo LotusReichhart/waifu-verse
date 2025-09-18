@@ -27,41 +27,43 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-    <script src="/javascript/common/client-preferences.js"></script>
+    <script type="module" src="/javascript/common/client-preferences.js"></script>
 </head>
 
 <body class="min-h-screen overflow-hidden bg-bg">
 
-<%- include('../../partials/sticky-header', { userInfo: userInfo, isHomePage: true, searchbarJson: commonJson.searchbar }) %>
+<div class="overflow-y-auto">
+    <%- include('../../partials/sticky-header', { ls: ls, userInfo: userInfo, isHomePage: true, searchbarJson: commonJson.searchbar }) %>
 
-<div class="flex h-screen w-full transition-all duration-300 ease-in-out">
-    <%- include('../../partials/left-sidebar', { lang: lang, leftSidebarJson: commonJson.leftSidebar }) %>
-    <%- include('../../partials/right-sidebar', {userInfo: userInfo, lang: lang, rightSidebarJson: commonJson.rightSidebar }) %>
+    <div class="flex h-screen w-full transition-all duration-300 ease-in-out">
+        <%- include('../../partials/left-sidebar', { lang: lang, ls:ls, leftSidebarJson: commonJson.leftSidebar }) %>
+        <%- include('../../partials/right-sidebar', {userInfo: userInfo, lang: lang, rightSidebarJson: commonJson.rightSidebar }) %>
 
-    <div id="main-content"
-         class="flex flex-col flex-1 pt-12 text-color transition-all duration-300 ease-in-out main-shifted">
+        <div id="main-content"
+             class="flex flex-col flex-1 pt-12 text-color transition-all duration-300 ease-in-out <%= ls === 'true' ? 'main-shifted' : '' %>">
 
-        <main class="flex-1 max-w-6xl w-full mx-auto px-2 py-6">
-            <div class="flex flex-col w-full space-y-2">
-                <h1 class="text-2xl text-primary font-bold whitespace-nowrap">
-                    <%= commonJson.label.privacyPolicy %>
-                </h1>
-                <h2 class="md:text-lg font-normal"><%= privacyPolicyJson.main.lastUpdated %></h2>
+            <main class="flex-1 max-w-6xl w-full mx-auto px-2 py-6">
+                <div class="flex flex-col w-full space-y-2">
+                    <h1 class="text-2xl text-primary font-bold whitespace-nowrap">
+                        <%= commonJson.label.privacyPolicy %>
+                    </h1>
+                    <h2 class="md:text-lg font-normal"><%= privacyPolicyJson.main.lastUpdated %></h2>
 
-                <% for (const section of privacyPolicyJson.main.sections){ %>
-                    <h2 class="md:text-xl font-bold"><%= section.title %></h2>
-                    <p class="text-sm md:text-lg"><%= section.content %></p>
-                <% } %>
-            </div>
-        </main>
+                    <% for (const section of privacyPolicyJson.main.sections){ %>
+                        <h2 class="md:text-xl font-bold"><%= section.title %></h2>
+                        <p class="text-sm md:text-lg"><%= section.content %></p>
+                    <% } %>
+                </div>
+            </main>
 
-        <%- include('../../partials/app-footer', {footerJson: commonJson.footer}) %>
+            <%- include('../../partials/app-footer', {footerJson: commonJson.footer}) %>
+        </div>
     </div>
 </div>
 
 <script src="/javascript/common/flowbite.js"></script>
 <script src="/javascript/common/sticky-header.js"></script>
-<script src="/javascript/common/left-sidebar.js"></script>
+<script type="module" src="/javascript/common/left-sidebar.js"></script>
 <script src="/javascript/common/right-sidebar.js"></script>
 <script src="/javascript/common/searchbar.js"></script>
 <script src="/javascript/common/datetime-format.js"></script>

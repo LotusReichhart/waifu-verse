@@ -1,4 +1,4 @@
-export class SaveRefreshTokenUseCase {
+export class SaveResetTokenUseCase {
     constructor(tokenService) {
         this.tokenService = tokenService;
     }

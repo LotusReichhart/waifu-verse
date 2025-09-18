@@ -1,17 +1,24 @@
 import {
-    RequestAccountRegistrationUseCase, VerifyAccountRegistration
+    RequestAccountRegistrationUseCase,
+    VerifyAccountRegistration
 } from "./register/domain/use-cases/index.js";
 import {
     CreateNewUserUseCase,
+    DeleteResetTokenUseCase,
     FindUserByEmailUseCase,
-    IssueTokensUseCase
+    IssueTokensUseCase,
+    SaveResetTokenUseCase,
+    VerifyRefreshTokenUseCase,
+    VerifyResetTokenUseCase
 } from "./common/domain/use-cases/index.js";
 import {LoginWithUsernameOrEmailUseCase} from "./login/domain/use-cases/index.js";
-import {RequestForgotPasswordUseCase, VerifyForgotPasswordUseCase} from "./forgot-password/domain/use-cases/index.js";
-import {SaveRefreshTokenUseCase} from "./common/domain/use-cases/save-reset-token.js";
-import {VerifyResetTokenUseCase} from "./common/domain/use-cases/verify-reset-token.js";
-import {DeleteResetTokenUseCase} from "./common/domain/use-cases/delete-reset-token.js";
+import {
+    RequestForgotPasswordUseCase,
+    VerifyForgotPasswordUseCase
+} from "./forgot-password/domain/use-cases/index.js";
+
 import {LoginWithGoogleUseCase} from "./google/domain/use-cases/index.js";
+import {RefreshAuthUseCase} from "./refresh/domain/use-cases/index.js";
 
 export function createAuthUseCases({userRepository, otpService, mailerService, tokenService}) {
     return {
@@ -42,11 +49,16 @@ export function createAuthUseCases({userRepository, otpService, mailerService, t
             otpService
         ),
 
+        refreshAuth: new RefreshAuthUseCase(
+            userRepository
+        ),
+
         findUserByEmail: new FindUserByEmailUseCase(userRepository),
         createNewUser: new CreateNewUserUseCase(userRepository),
         issueTokens: new IssueTokensUseCase(tokenService),
-        saveResetToken: new SaveRefreshTokenUseCase(tokenService),
+        saveResetToken: new SaveResetTokenUseCase(tokenService),
         verifyResetToken: new VerifyResetTokenUseCase(tokenService),
         deleteResetToken: new DeleteResetTokenUseCase(tokenService),
+        verifyRefreshToken: new VerifyRefreshTokenUseCase(tokenService)
     };
 }
