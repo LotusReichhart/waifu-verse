@@ -4,10 +4,8 @@ import {optionalAuthMiddleware} from "../../shared/middlewares/auth.middleware.j
 
 const router = Router();
 
-router.use(optionalAuthMiddleware);
-
-router.get('/', renderHomePage);
-router.get('/privacy-policy', renderPrivacyPolicyPage);
-router.get('/terms-of-use', renderTermsOfUsePage);
+router.get('/', optionalAuthMiddleware, renderHomePage);
+router.get('/privacy-policy', optionalAuthMiddleware, renderPrivacyPolicyPage);
+router.get('/terms-of-use', optionalAuthMiddleware, renderTermsOfUsePage);
 
 export default router;
