@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="waifu, anime, character, AI, verse, interaction">
+    <meta name="author" content="Lotus Reichhart - aka DNA">
+
+    <title><%= forgotPasswordJson.title %></title>
+    <meta name="description" content="<%= forgotPasswordJson.description %>">
+
+    <meta property="og:title" content="<%= forgotPasswordJson.title %>">
+    <meta property="og:description" content="<%= forgotPasswordJson.description %>">
+    <meta property="og:image" content="/favicon.ico">
+    <meta property="og:url" content="<%= canonicalUrl %>">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= forgotPasswordJson.title %>">
+    <meta name="twitter:description" content="<%= forgotPasswordJson.description %>">
+    <meta name="twitter:image" content="/favicon.ico">
+
+    <link rel="canonical" href="<%= canonicalUrl %>">
+
+    <link rel="stylesheet" href="/stylesheets/tailwind.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <script type="module" src="/javascript/common/client-preferences.js"></script>
+</head>
+<body class="background-color">
+
+<main class="min-h-screen flex items-center justify-center text-color">
+    <div class="w-full max-w-md p-2 space-y-6">
+        <h1 class="text-3xl text-center font-bold text-primary">WaifuVerse</h1>
+
+        <% if(step === 'submit'){ %>
+            <div id="step-submit">
+                <form id="forgot-form"
+                      action="/<%= lang %>/auth/forgot-password"
+                      method="POST"
+                      class="space-y-4">
+                    <p class="font-normal"><%= forgotPasswordJson.main.label.enterYourEmail %></p>
+                    <div class="space-y-3">
+                        <%- include('../partials/field-input', {
+                        label: commonJson.label.email,
+                        inputId: 'email',
+                        value: formData.email,
+                        errorMessage: errorFields.email
+                        }) %>
+
+                        <%- include('../../../partials/global-error-message',{
+                        id: 'errorGlobal',
+                        content: errorFields.global
+                        }) %>
+                    </div>
+
+                    <button type="submit" class="w-full py-2 button-disabled rounded" disabled>
+                        <%= forgotPasswordJson.main.label.resetPassword.toUpperCase() %>
+                    </button>
+                </form>
+            </div>
+        <% } %>
+
+        <% if(step === 'verify'){ %>
+            <div id="step-verify" class="space-y-5">
+                <p class="font-normal"><%= forgotPasswordJson.main.message.otpNotification %></p>
+                <form action="/<%= lang %>/auth/forgot-password/verify" method="POST" class="space-y-4">
+                    <input type="hidden" name="email" value="<%= formData.email %>">
+                    <input type="hidden" name="otp" id="otpValue">
+                    <input type="hidden" name="duration" id="durationValue">
+
+                    <div class="space-y-1">
+                        <div class="flex justify-between">
+                            <% for (let i = 0; i < 6; i++) { %>
+                                <input type="text" maxlength="1"
+                                       class="w-10 h-12 text-center border-none border-b-3-disabled focus-border-b-3-primary text-lg otp-input bg-transparent">
+                            <% } %>
+                        </div>
+                        <div>
+                            <span id="resendOtpError"
+                                  class="text-error italic text-sm mt-2"><%= errorFields.otp %></span>
+                        </div>
+                    </div>
+
+                    <%- include('../../../partials/global-error-message',{
+                    id: 'errorGlobal',
+                    content: errorFields.global
+                    }) %>
+
+                    <div class="space-y-3">
+                        <button type="submit" id="otpSubmit" class="w-full py-2 button-disabled rounded" disabled>
+                            <%= forgotPasswordJson.main.label.verifyOtp.toUpperCase() %>
+                        </button>
+
+                        <button type="button" id="resendOtp" class="text-disabled" disabled>
+                            <%= forgotPasswordJson.main.label.resendOtp %>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        <% } %>
+
+        <% if(step === 'new-password'){ %>
+            <div id="step-new-password" class="space-y-5">
+                <p class="font-normal"><%= forgotPasswordJson.main.label.changePasswordDescription %></p>
+                <div class="space-y-4">
+                    <%- include('../partials/password-input', {
+                    label: forgotPasswordJson.main.label.newPassword,
+                    inputId: 'newPassword',
+                    buttonId: 'toggleNewPassword',
+                    errorId: 'newPasswordError',
+                    errorMessage: null
+                    }) %>
+
+                    <%- include('../partials/password-input', {
+                    label: forgotPasswordJson.main.label.confirmPassword,
+                    inputId: 'confirmPassword',
+                    buttonId: 'toggleConfirmPassword',
+                    errorId: 'confirmPasswordError',
+                    errorMessage: null
+                    }) %>
+
+                    <%- include('../../../partials/global-error-message',{
+                    id: 'errorGlobal',
+                    content: errorFields.global
+                    }) %>
+
+                    <button id="change-password-submit" class="w-full py-2 button-disabled rounded" disabled>
+                        <%= forgotPasswordJson.main.label.changeNewPassword.toUpperCase() %>
+                    </button>
+                </div>
+            </div>
+        <% } %>
+
+        <div class="flex flex-col justify-center items-center space-y-8">
+            <a href="/<%= lang %>/auth/login" class="text-blue-600 hover:underline">
+                <%= forgotPasswordJson.main.label.backToLogin %>
+            </a>
+
+            <div class="flex justify-center items-center space-x-4">
+                <a href="/<%= lang %>/terms-of-use"
+                   target="_blank" rel="noopener noreferrer"
+                   class="text-sm font-normal hover:underline">
+                    <%= commonJson.label.termsOfUse %>
+                </a>
+                <span>
+                |
+            </span>
+                <a href="/<%= lang %>/privacy-policy"
+                   target="_blank" rel="noopener noreferrer"
+                   class="text-sm font-normal hover:underline">
+                    <%= commonJson.label.privacyPolicy %>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/javascript/common/flowbite.js"></script>
+<script type="module" src="/javascript/auth/forgot-password.js"></script>
+
+<script>
+    window.commonJson = <%- JSON.stringify(commonJson) %>;
+    window.forgotPasswordJson = <%- JSON.stringify(forgotPasswordJson) %>;
+    window.duration = <%- JSON.stringify(typeof duration !== 'undefined' ? duration : 59) %>;
+    window.addEventListener("pageshow", function (event) {
+        if (event.persisted) {
+            document.getElementById("forgot-form").reset();
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+{
+  "label": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "logout": "Đăng xuất",
+    "home": "Trang chủ",
+    "character": "Nhân vật",
+    "history": "Lịch sử",
+    "blog": "Blog",
+    "termsOfUse": "Điều khoản sử dụng",
+    "privacyPolicy": "Chính sách quyền riêng tư",
+    "email": "Email",
+    "username": "Tên người dùng",
+    "password": "Mật khẩu",
+    "forgotPassword": "Quên mật khẩu",
+    "or": "hoặc",
+    "loading": "Vui lòng chờ...",
+    "IAgree": "Tôi đồng ý với",
+    "save": "Lưu",
+    "confirm": "Xác nhận",
+    "cancel": "Hủy bỏ",
+    "all": "Tất cả",
+    "delete": "Xóa",
+    "restore": "Khôi phục",
+    "youSure": "Bạn có chắc chắn muốn làm điều này không?",
+    "close":"Đóng",
+    "enterImageUrl": "Nhập URL hình ảnh",
+    "back": "Quay lại"
+  },
+  "searchbar": {
+    "label": "Tìm kiếm",
+    "signInToSaveSearchHistory": "Đăng nhập để lưu lịch sử tìm kiếm",
+    "noSearchHistory": "Không có lịch sử tìm kiếm",
+    "unableToLoadHistory": "Không thể tải lịch sử",
+    "errorWhileSearching": "Lỗi khi tìm kiếm",
+    "noResultsFound": "Không tìm thấy kết quả",
+    "results": "Kết quả"
+  },
+  "leftSidebar": {
+    "home": "Trang chủ",
+    "characters": {
+      "title": "Nhân vật",
+      "links": {
+        "list": "Danh sách",
+        "create": "Thêm mới"
+      }
+    },
+    "community": {
+      "title": "Cộng đồng",
+      "links": {
+        "blogs": "Blog"
+      }
+    }
+  },
+  "rightSidebar": {
+    "guest": "Khách",
+    "profile": "Hồ sơ",
+    "settings": "Cài đặt",
+    "logout": "Đăng Xuất",
+    "login": "Đăng Nhập"
+  },
+  "footer": {
+    "slogan": "Waifu Verse là nơi khám phá thế giới nhân vật anime, manga và văn hóa Nhật Bản — với kho wiki, bài viết phân tích và blog cộng đồng dành cho mọi người yêu thích.",
+    "sections": {
+      "wiki": {
+        "title": "Wiki",
+        "links": {
+          "characters": "Nhân vật",
+          "series": "Tác phẩm",
+          "universes": "Thế giới",
+          "tags": "Thẻ & Chủ đề"
+        }
+      },
+      "blog": {
+        "title": "Blog",
+        "links": {
+          "latest": "Bài viết mới",
+          "categories": "Chuyên mục",
+          "tags": "Thẻ bài viết",
+          "about": "Giới thiệu blog"
+        }
+      },
+      "connect": {
+        "title": "Kết nối",
+        "links": {
+          "contact": "Liên hệ",
+          "discord": "Discord",
+          "twitter": "Twitter / X",
+          "github": "GitHub"
+        }
+      }
+    },
+    "bottom": {
+      "rights": "All rights reserved.",
+      "builtWith": "Được xây dựng với ♥ bởi",
+      "author": "Lotus Reichhart"
+    }
+  },
+  "errors": {
+    "notFound": "Trang không tồn tại",
+    "unknownError": "Lỗi không xác định",
+    "somethingIsWrong": "Có lỗi xảy ra",
+    "serverError": "Đã xảy ra lỗi máy chủ. Vui lòng thử lại.",
+    "tooManyRequest": "Thao tác quá nhiều, vui lòng thử lại sau",
+    "invalidUrl": "URL không hợp lệ!",
+    "couldNotBeLoaded": "Không thể load từ URL này!"
+  }
+}

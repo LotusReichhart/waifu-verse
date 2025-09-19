@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "emailAlreadyExistsError": "Email đã được sử dụng!",
+    "usernameAlreadyExistsError": "Tên người dùng đã tồn tại!",
+    "createUserFailedError": "Đã xảy ra sự cố khi đăng ký"
+  }
+}

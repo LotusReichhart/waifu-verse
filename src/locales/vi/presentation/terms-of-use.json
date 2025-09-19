@@ -1,0 +1,85 @@
+{
+  "title": "WaifuVerse | Điều khoản sử dụng",
+  "description": "Điều khoản Sử dụng này điều chỉnh việc bạn truy cập và sử dụng WaifuVerse, bao gồm tạo nhân vật, nội dung do người dùng đóng góp, blog, bình luận và các hoạt động cộng đồng.",
+  "main": {
+    "opening": "VUI LÒNG ĐỌC VÀ XEM XÉT KỸ CÁC ĐIỀU KHOẢN SỬ DỤNG TRƯỚC KHI SỬ DỤNG TRANG WEB NÀY.",
+    "lastUpdated": "Cập nhật lần cuối: 2025-08-25",
+    "sections": [
+      {
+        "id": 1,
+        "title": "Giới thiệu & Liên hệ",
+        "content": "Các Điều khoản sử dụng này áp dụng cho tất cả các sản phẩm và dịch vụ dưới thương hiệu WaifuVerse. Liên hệ: support@waifuverse.example.com."
+      },
+      {
+        "id": 2,
+        "title": "Đồng ý với Điều khoản",
+        "content": "Khi truy cập hoặc sử dụng Dịch vụ, bạn cho rằng mình đã đọc, hiểu và đồng ý bị ràng buộc bởi các Điều khoản này."
+      },
+      {
+        "id": 3,
+        "title": "Thay đổi Dịch vụ và Điều khoản",
+        "content": "Chúng tôi có thể cập nhật dịch vụ và/hoặc Điều khoản bất cứ lúc nào. Việc tiếp tục sử dụng Dịch vụ đồng nghĩa bạn đã chấp thuận bản cập nhật đó."
+      },
+      {
+        "id": 4,
+        "title": "Đăng ký & Tuổi tối thiểu",
+        "content": "Một số tính năng yêu cầu đăng ký tài khoản. Bạn cam kết đủ tuổi hợp pháp để tham gia (tối thiểu 13 tuổi, tùy luật pháp địa phương)."
+      },
+      {
+        "id": 5,
+        "title": "Bảo mật tài khoản",
+        "content": "Bạn chịu trách nhiệm bảo mật thông tin tài khoản và mọi hoạt động thực hiện qua tài khoản của bạn."
+      },
+      {
+        "id": 6,
+        "title": "Đóng góp nội dung",
+        "content": "Bạn là người duy nhất chịu trách nhiệm về nội dung bạn tạo ra (nhân vật, blog, bình luận). Nội dung không được vi phạm pháp luật hoặc gây tổn hại cho người khác."
+      },
+      {
+        "id": 7,
+        "title": "Giấy phép sử dụng nội dung",
+        "content": "Khi đóng góp nội dung, bạn cấp cho WaifuVerse quyền không độc quyền, miễn phí để sử dụng, hiển thị, chỉnh sửa và phân phối trong phạm vi Dịch vụ."
+      },
+      {
+        "id": 8,
+        "title": "Quyền sở hữu trí tuệ",
+        "content": "Tất cả logo, tên, đồ họa, nhãn hiệu... thuộc sở hữu WaifuVerse. Không được sử dụng ngoài phạm vi Dịch vụ nếu không có sự cho phép."
+      },
+      {
+        "id": 9,
+        "title": "Giới hạn Trách nhiệm & Miễn trừ",
+        "content": "WaifuVerse không chịu trách nhiệm về mọi thiệt hại phát sinh từ việc sử dụng hoặc không thể sử dụng Dịch vụ. Trách nhiệm tối đa bị giới hạn trong mức hợp lý."
+      },
+      {
+        "id": 10,
+        "title": "Tranh chấp & Luật áp dụng",
+        "content": "Tranh chấp sẽ được giải quyết theo luật pháp Việt Nam (hoặc quốc gia áp dụng) và tại tòa án có thẩm quyền."
+      },
+      {
+        "id": 11,
+        "title": "Điều khoản khác",
+        "content": "Nếu một điều khoản bị vô hiệu, các điều khoản còn lại vẫn có hiệu lực. WaifuVerse có thể chuyển nhượng các quyền này mà không cần thông báo."
+      },
+      {
+        "id": 12,
+        "title": "Quy tắc Cộng đồng",
+        "content": "Tôn trọng người khác, không phân biệt đối xử, không spam, không doxxing, không đăng nội dung nhạy cảm trái luật. Vi phạm có thể bị khóa hoặc cấm tài khoản."
+      },
+      {
+        "id": 13,
+        "title": "Chính sách Bản quyền",
+        "content": "WaifuVerse tôn trọng quyền sở hữu trí tuệ. Nếu bạn tin rằng nội dung vi phạm bản quyền, liên hệ: copyright@waifuverse.example.com."
+      },
+      {
+        "id": 14,
+        "title": "Chính sách Nội dung Nhạy cảm",
+        "content": "Không cho phép nội dung liên quan đến lạm dụng trẻ em, bạo lực cực đoan, khủng bố, thù ghét. Nội dung 18+ cần có cảnh báo rõ ràng."
+      },
+      {
+        "id": 15,
+        "title": "Khiếu nại & Giải quyết Tranh chấp",
+        "content": "Khiếu nại gửi qua abuse@waifuverse.example.com. Ưu tiên thương lượng trước khi đưa ra pháp luật."
+      }
+    ]
+  }
+}

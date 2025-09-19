@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="waifu, anime, character, AI, verse, interaction">
+    <meta name="author" content="Lotus Reichhart - aka DNA">
+
+    <title><%= registerJson.title %></title>
+    <meta name="description" content="<%= registerJson.description %>">
+
+    <meta property="og:title" content="<%= registerJson.title %>">
+    <meta property="og:description" content="<%= registerJson.description %>">
+    <meta property="og:image" content="/favicon.ico">
+    <meta property="og:url" content="<%= canonicalUrl %>">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= registerJson.title %>">
+    <meta name="twitter:description" content="<%= registerJson.description %>">
+    <meta name="twitter:image" content="/favicon.ico">
+
+    <link rel="canonical" href="<%= canonicalUrl %>">
+
+    <link rel="stylesheet" href="/stylesheets/tailwind.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <script type="module" src="/javascript/common/client-preferences.js"></script>
+
+</head>
+<body class="background-color">
+
+<main class="min-h-screen flex items-center justify-center text-color">
+    <div class="w-full max-w-md p-2 space-y-6">
+        <h1 class="self-center text-3xl text-center text-primary font-bold whitespace-nowrap">WaifuVerse</h1>
+
+        <% if(step === 'submit'){ %>
+            <div id="step-submit" class="space-y-3">
+                <div class="space-y-4">
+                    <h2 class="text-xl font-bold"><%= commonJson.label.register %></h2>
+
+                    <form id="register-form" action="/<%= lang %>/auth/register" method="POST" class="space-y-6">
+                        <div class="space-y-3">
+                            <%- include('../partials/field-input', {
+                            label: commonJson.label.email,
+                            inputId: 'email',
+                            value: formData.email,
+                            errorMessage: errorFields.email
+                            }) %>
+
+                            <%- include('../partials/field-input', {
+                            label: commonJson.label.username,
+                            inputId: 'username',
+                            value: formData.username,
+                            errorMessage: errorFields.username
+                            }) %>
+
+                            <%- include('../partials/password-input', {
+                            label: commonJson.label.password,
+                            inputId: 'password',
+                            buttonId: 'togglePassword',
+                            errorId: null,
+                            errorMessage: errorFields.password
+                            }) %>
+
+                            <%- include('../../../partials/global-error-message',{
+                            id: 'errorGlobal',
+                            content: errorFields.global
+                            }) %>
+
+                            <div class="flex items-start space-x-2">
+                                <input
+                                        type="checkbox"
+                                        id="isAgreeTerms"
+                                        name="isAgreeTerms"
+                                        value="true"
+                                        class="mt-1 text-primary"
+                                >
+                                <label for="isAgreeTerms" class="text-sm sm:text-base">
+                                    <%= commonJson.label.IAgree %>
+                                    <a href="/<%= lang %>/terms-of-use"
+                                       target="_blank" rel="noopener noreferrer"
+                                       class="font-medium hover:underline">
+                                        <%= commonJson.label.termsOfUse %>
+                                    </a>
+                                    &
+                                    <a href="/<%= lang %>/privacy-policy"
+                                       target="_blank" rel="noopener noreferrer"
+                                       class="font-medium hover:underline">
+                                        <%= commonJson.label.privacyPolicy %>
+                                    </a>
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <button type="submit"
+                                class="w-full py-2 font-semibold button-disabled rounded"
+                                disabled>
+                            <%= commonJson.label.register.toUpperCase() %>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="mt-6 text-center text-sm md:text-base text-gray-600 dark:text-gray-300">
+                        <%= registerJson.main.label.alreadyAccount %>
+                        <a href="/auth/login" class="text-blue-600 hover:underline">
+                            <%= registerJson.main.label.loginNow %>
+                        </a>
+                    </div>
+
+                    <div class="relative my-5">
+                        <div class="absolute inset-0 flex items-center px-4">
+                            <div class="w-full border-t border-gray-200 dark:border-gray-600"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="background-color px-6"> <%= commonJson.label.or %></span>
+                        </div>
+                    </div>
+
+                    <a href="/auth/google"
+                       class="w-full flex items-center justify-center gap-2 p-2 bg-white rounded hover:bg-gray-100
+                transition text-sm text-gray-600 md:text-base font-medium border-color">
+                        <img src="/icons/google-icon.png" alt="Google" class="w-5 h-5">
+                        <%= registerJson.main.label.registerWithGoogle %>
+                    </a>
+                </div>
+            </div>
+        <% } %>
+
+        <% if(step === 'verify'){ %>
+            <div id="step-verify" class="space-y-4">
+                <p class="font-normal"><%= registerJson.main.message.otpNotification %></p>
+                <form action="/<%= lang %>/auth/register/verify" method="POST" class="space-y-4">
+                    <input type="hidden" name="email" value="<%= formData.email %>">
+                    <input type="hidden" name="otp" id="otpValue">
+                    <input type="hidden" name="duration" id="durationValue">
+
+                    <div class="space-y-1">
+                        <div class="flex justify-between">
+                            <% for (let i = 0; i < 6; i++) { %>
+                                <input type="text" maxlength="1"
+                                       class="w-10 h-12 text-center border-none border-b-3-disabled focus-border-b-3-primary text-lg otp-input bg-transparent">
+                            <% } %>
+                        </div>
+                        <div>
+                            <span id="resendOtpError"
+                                  class="text-error italic text-sm mt-2"><%= errorFields.otp %></span>
+                        </div>
+                    </div>
+
+                    <%- include('../../../partials/global-error-message',{
+                    id: 'errorGlobal',
+                    content: errorFields.global
+                    }) %>
+
+                    <div class="space-y-3">
+                        <button type="submit" id="otpSubmit" class="w-full py-2 button-disabled rounded" disabled>
+                            <%= registerJson.main.label.verifyOtp.toUpperCase() %>
+                        </button>
+
+                        <button type="button" id="resendOtp" class="text-disabled" disabled>
+                            <%= registerJson.main.label.resendOtp %>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        <% } %>
+
+        <div class="flex justify-center items-center space-x-4">
+            <a href="/<%= lang %>/terms-of-use"
+               target="_blank" rel="noopener noreferrer"
+               class="text-sm font-normal hover:underline">
+                <%= commonJson.label.termsOfUse %>
+            </a>
+            <span>
+                |
+            </span>
+            <a href="/<%= lang %>/privacy-policy"
+               target="_blank" rel="noopener noreferrer"
+               class="text-sm font-normal hover:underline">
+                <%= commonJson.label.privacyPolicy %>
+            </a>
+        </div>
+    </div>
+</main>
+
+<script src="/javascript/common/flowbite.js"></script>
+<script type="module" src="/javascript/auth/register.js"></script>
+
+<script>
+    window.commonJson = <%- JSON.stringify(commonJson) %>;
+    window.registerJson = <%- JSON.stringify(registerJson) %>;
+    window.duration = <%- JSON.stringify(typeof duration !== 'undefined' ? duration : 59) %>;
+    window.addEventListener("pageshow", function (event) {
+        if (event.persisted) {
+            document.getElementById("register-form").reset();
+        }
+    });
+</script>
+
+</body>
+</html>

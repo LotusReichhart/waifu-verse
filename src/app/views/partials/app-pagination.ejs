@@ -1,0 +1,43 @@
+<% if (totalPages > 1) { %>
+    <nav aria-label="Pagination">
+        <ul class="flex items-center -space-x-px h-8 text-sm justify-center mt-6">
+            <li>
+                <a href="<%= currentUrl %>page=<%= currentPage - 1 %>"
+                   class="flex items-center justify-center px-3 h-8 ms-0 text-primary border-color text-primary
+                    rounded-s-lg <%= currentPage === 1 ? 'pointer-events-none opacity-50' : '' %>">
+                    <span class="sr-only">Previous</span>
+                    <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                         fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="2" d="M5 1 1 5l4 4"/>
+                    </svg>
+                </a>
+            </li>
+
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <li>
+                    <a href="<%= currentUrl %>page=<%= i %>"
+                       class="flex items-center justify-center px-3 h-8 text-primary
+                   <%= currentPage === i
+                               ? 'button-active'
+                               : 'border-y-color' %>">
+                        <%= i %>
+                    </a>
+                </li>
+            <% } %>
+
+            <li>
+                <a href="<%= currentUrl %>page=<%= currentPage + 1 %>"
+                   class="flex items-center justify-center px-3 h-8 text-primary border-color rounded-e-lg text-primary
+                        <%= currentPage === totalPages ? 'pointer-events-none opacity-50' : '' %>">
+                    <span class="sr-only">Next</span>
+                    <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                         fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="2" d="m1 9 4-4-4-4"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+<% } %>

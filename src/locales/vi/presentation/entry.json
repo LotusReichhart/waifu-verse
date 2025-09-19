@@ -1,0 +1,41 @@
+{
+  "createEntry": {
+    "title": "WaifuVerse | Thêm thông tin",
+    "description": "Bổ sung thông tin về tổng quan, hình ảnh, câu chuyện,... cho nhân vật",
+    "main": {
+      "createdBy": "Được tạo bởi:",
+      "time": "Thời gian:",
+      "addInfoTitle": "Bổ sung thông tin nhân vật",
+      "imageDeleted": "Đã xóa ảnh",
+      "deleted": "Đã xóa",
+      "buttons": {
+        "stopAdding": "Ngừng bổ sung",
+        "addAnotherVersion": "Bổ sung phiên bản khác"
+      },
+      "status": {
+        "hasTrashed": "Có phiên bản trong thùng rác",
+        "noInfo": "Chưa có thông tin"
+      },
+      "form": {
+        "uploadImage": "Tải ảnh lên",
+        "enterImageUrl": "Nhập link ảnh",
+        "language": "Ngôn ngữ",
+        "submit": "Thêm thông tin"
+      },
+      "errors": {
+        "exist": "Bạn đã có phiên bản {langTitle} cho {sectionLabel}.",
+        "languageEmpty": "Ngôn ngữ là bắt buộc",
+        "imageRequired": "Hình ảnh là bắt buộc.",
+        "uploadFailed": "Tải ảnh lên thất bại.",
+        "notFound": "Thông tin không tồn tại",
+        "forbidden": "Bạn không có quyền xóa",
+        "invalidIndex": "Đã có lỗi, vui lòng thử lại",
+        "mediaNotFound": "Media item không tồn tại",
+        "deleteFailed": "Đã có lỗi, vui lòng thử lại"
+      }
+    }
+  },
+  "errors": {
+    "characterNotFound": "Nhân vật không tồn tại!"
+  }
+}

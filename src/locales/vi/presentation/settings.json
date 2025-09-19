@@ -1,0 +1,20 @@
+{
+  "title": "WaifuVerse | Cài đặt",
+  "description": "Quản lý tùy chọn tài khoản, bao gồm ngôn ngữ, giao diện và các thiết lập cá nhân khác.",
+  "main": {
+    "title": "Cài đặt",
+    "language": {
+      "label": "Ngôn ngữ",
+      "description": "Ngôn ngữ bạn muốn sử dụng cho giao diện của Waifu Verse."
+    },
+    "theme": {
+      "label": "Chủ đề",
+      "description": "Chủ đề của trang web.",
+      "options": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<div class="image-url-picker-modal fixed hidden inset-0 bg-black/60 z-[200] items-center justify-center">
+    <div class="background-color-alt rounded p-6 w-full max-w-md shadow">
+        <label for="image-url-input" class="text-lg text-color font-semibold mb-4"><%= modalLabel %></label>
+        <input type="text"
+               id="image-url-input"
+               class="image-url-input w-full border-color rounded px-2 py-1.5 focus:outline-none"
+               placeholder="https://example.com/image.jpg"
+               autocomplete="off"/>
+        <p class="url-error text-error text-sm italic mt-2 hidden">
+            <%= errorMessage %>
+        </p>
+        <div class="mt-4 flex justify-end space-x-2">
+            <button class="cancel-url-btn px-3 py-1 primary-border text-primary rounded">
+                <%= cancelLabel %>
+            </button>
+            <button class="confirm-url-btn px-3 py-1 button-primary rounded">
+                <%= confirmLabel %>
+            </button>
+        </div>
+    </div>
+</div>

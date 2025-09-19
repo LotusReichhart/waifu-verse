@@ -1,0 +1,75 @@
+{
+  "characters": {
+    "title": "WaifuVerse | Danh sách nhân vật",
+    "description": "Khám phá những nhân vật yêu thích từ anime, manga và thế giới waifu.",
+    "main": {
+      "title": "Danh sách nhân vật",
+      "search": "Tìm kiếm",
+      "sort": "Sắp xếp",
+      "sortOptions": {
+        "nameAsc": "Tên A-Z",
+        "nameDesc": "Tên Z-A",
+        "createdAtDesc": "Mới nhất",
+        "createdAtAsc": "Cũ nhất",
+        "default": "-- Chọn thứ tự --"
+      },
+      "gender": {
+        "title": "Giới tính",
+        "options": {
+          "male": "Nam",
+          "female": "Nữ",
+          "other": "Không xác định"
+        }
+      },
+      "filters": {
+        "reset": "Bỏ lọc",
+        "apply": "Lọc"
+      },
+      "empty": "Danh sách nhân vật trống."
+    }
+  },
+  "createCharacter": {
+    "title": "WaifuVerse | Thêm mới nhân vật",
+    "description": "Tạo nhân vật mới cho bộ sưu tập WaifuVerse, bao gồm thông tin, hình ảnh và chi tiết khác.",
+    "main": {
+      "title": "Thêm mới nhân vật",
+      "uploadImage": "Tải ảnh lên",
+      "inputImageUrl": "Nhập link ảnh",
+      "fields": {
+        "name": {
+          "label": "Tên nhân vật",
+          "placeholder": "Tên nhân vật"
+        },
+        "gender": {
+          "label": "Giới tính",
+          "options": {
+            "male": "Nam",
+            "female": "Nữ",
+            "other": "Không xác định"
+          }
+        }
+      },
+      "errors": {
+        "IMAGE_UPLOAD_FAILED": "Không lưu được ảnh",
+        "name": {
+          "required": "Tên nhân vật là bắt buộc.",
+          "tooLong": "Tên quá dài — vui lòng sử dụng tên ngắn gọn hơn (tối đa 60 ký tự).",
+          "link": "Tên không được chứa liên kết.",
+          "code": "Tên không được chứa câu lệnh",
+          "numeric": "Tên không được chỉ là các chữ số.",
+          "exists": "Nhân vật đã tồn tại."
+        }
+      },
+      "submit": "Tạo nhân vật"
+    }
+  },
+  "detailCharacter": {
+    "title": "WaifuVerse",
+    "description": "Bách khoa nhân vật với tiểu sử, đặc điểm và câu chuyện liên quan",
+    "main": {
+      "errors": {
+        "notFound": "Nhân vật không tồn tại"
+      }
+    }
+  }
+}
